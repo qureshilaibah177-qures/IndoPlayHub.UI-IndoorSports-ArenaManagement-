@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.AddBookingPage"
+    Title="New Booking"
+    BackgroundColor="#0B0F14">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="18"
+            MaximumWidthRequest="900"
+            HorizontalOptions="Center">
+
+            <!-- HEADER -->
+
+            <VerticalStackLayout Spacing="4">
+
+                <Label
+                    Text="NEW BOOKING"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#BB86FC"
+                    CharacterSpacing="1.5" />
+
+                <Label
+                    Text="Create Booking"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                <Label
+                    Text="Enter customer and court booking details."
+                    FontSize="13"
+                    TextColor="#9AA4B2" />
+
+            </VerticalStackLayout>
+
+
+            <!-- CUSTOMER DETAILS -->
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="18">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Customer Details"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Entry
+                        x:Name="TxtCustomerName"
+                        Placeholder="Customer name"
+                        PlaceholderColor="#6F7885"
+                        TextColor="White"
+                        BackgroundColor="#1B222C" />
+
+                    <Entry
+                        x:Name="TxtCustomerPhone"
+                        Placeholder="Phone number"
+                        PlaceholderColor="#6F7885"
+                        TextColor="White"
+                        Keyboard="Telephone"
+                        BackgroundColor="#1B222C" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- COURT DETAILS -->
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="18">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Court and Sport"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Select Court"
+                        FontSize="12"
+                        TextColor="#9AA4B2" />
+
+                    <Picker
+                        x:Name="PickerCourt"
+                        Title="Choose a court"
+                        TitleColor="#6F7885"
+                        TextColor="White"
+                        BackgroundColor="#1B222C"
+                        SelectedIndexChanged="OnCourtChanged" />
+
+                    <Label
+                        x:Name="LblSelectedRate"
+                        Text="Rate: Rs. 0 / hour"
+                        FontSize="13"
+                        TextColor="#03DAC6" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- DATE AND TIME -->
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="18">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Date and Time"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Booking Date"
+                        FontSize="12"
+                        TextColor="#9AA4B2" />
+
+                    <DatePicker
+                        x:Name="DpBookingDate"
+                        TextColor="White"
+                        BackgroundColor="#1B222C" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <VerticalStackLayout
+                            Grid.Column="0"
+                            Spacing="5">
+
+                            <Label
+                                Text="Start Time"
+                                FontSize="12"
+                                TextColor="#9AA4B2" />
+
+                            <TimePicker
+                                x:Name="TpStartTime"
+                                Format="hh:mm tt"
+                                TextColor="White"
+                                BackgroundColor="#1B222C"
+                                PropertyChanged="OnTimeChanged" />
+
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="5">
+
+                            <Label
+                                Text="End Time"
+                                FontSize="12"
+                                TextColor="#9AA4B2" />
+
+                            <TimePicker
+                                x:Name="TpEndTime"
+                                Format="hh:mm tt"
+                                TextColor="White"
+                                BackgroundColor="#1B222C"
+                                PropertyChanged="OnTimeChanged" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- PAYMENT -->
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="18">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Payment"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        x:Name="LblTotalAmount"
+                        Text="Total: Rs. 0"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="#03DAC6" />
+
+                    <Picker
+                        x:Name="PickerPaymentStatus"
+                        Title="Payment status"
+                        TitleColor="#6F7885"
+                        TextColor="White"
+                        BackgroundColor="#1B222C">
+
+                        <Picker.Items>
+                            <x:String>Pending</x:String>
+                            <x:String>Paid</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+
+                    <Picker
+                        x:Name="PickerBookingStatus"
+                        Title="Booking status"
+                        TitleColor="#6F7885"
+                        TextColor="White"
+                        BackgroundColor="#1B222C">
+
+                        <Picker.Items>
+                            <x:String>Confirmed</x:String>
+                            <x:String>Pending</x:String>
+                            <x:String>Cancelled</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- SAVE -->
+
+            <Button
+                Text="Save Booking"
+                BackgroundColor="#BB86FC"
+                TextColor="#101114"
+                FontSize="15"
+                FontAttributes="Bold"
+                HeightRequest="52"
+                CornerRadius="12"
+                Clicked="OnSaveBookingClicked" />
+
+            <Button
+                Text="Cancel"
+                BackgroundColor="Transparent"
+                TextColor="#9AA4B2"
+                FontSize="13"
+                HeightRequest="45"
+                Clicked="OnCancelClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ x:Class="IndoPlayHub.UI.EditBusinessDetailsPage"
+ Title="Edit Business Details"
+ BackgroundColor="#101114">
+
+    
+    <ScrollView>
+
+        <VerticalStackLayout
+        Padding="30,35,30,40"
+        Spacing="18"
+        MaximumWidthRequest="650"
+        HorizontalOptions="Center">
+
+            <!-- ================================================= -->
+            <!-- HEADER -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout
+            Spacing="5"
+            HorizontalOptions="Center">
+
+                <Label
+                Text="Edit Business Details"
+                FontSize="30"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center" />
+
+                <Label
+                Text="Update your arena business information."
+                FontSize="13"
+                TextColor="#8F96A3"
+                HorizontalTextAlignment="Center"
+                Margin="0,0,0,10" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- BUSINESS INFORMATION -->
+            <!-- ================================================= -->
+
+            <Border
+            BackgroundColor="#191B20"
+            Stroke="#292D35"
+            StrokeThickness="1"
+            Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label
+                    Text="Business Information"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="#BB86FC" />
+
+
+                    <!-- ARENA NAME -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                        Text="Arena / Business Name"
+                        FontSize="13"
+                        TextColor="#B8BDC7" />
+
+                        <Entry
+                        x:Name="TxtArenaName"
+                        Placeholder="Enter your arena name"
+                        PlaceholderColor="#70757F"
+                        TextColor="White"
+                        BackgroundColor="#23262D"
+                        ClearButtonVisibility="WhileEditing" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- EMAIL -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                        Text="Business Email"
+                        FontSize="13"
+                        TextColor="#B8BDC7" />
+
+                        <Entry
+                        x:Name="TxtEmail"
+                        Placeholder="business@example.com"
+                        PlaceholderColor="#70757F"
+                        Keyboard="Email"
+                        TextColor="White"
+                        BackgroundColor="#23262D"
+                        ClearButtonVisibility="WhileEditing" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- PHONE -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                        Text="Contact Number"
+                        FontSize="13"
+                        TextColor="#B8BDC7" />
+
+                        <Entry
+                        x:Name="TxtPhone"
+                        Placeholder="03XXXXXXXXX"
+                        PlaceholderColor="#70757F"
+                        Keyboard="Telephone"
+                        TextColor="White"
+                        BackgroundColor="#23262D"
+                        ClearButtonVisibility="WhileEditing" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- LOCATION -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                        Text="Business Location / Address"
+                        FontSize="13"
+                        TextColor="#B8BDC7" />
+
+                        <Editor
+                        x:Name="TxtLocation"
+                        Placeholder="Enter your arena location"
+                        PlaceholderColor="#70757F"
+                        TextColor="White"
+                        BackgroundColor="#23262D"
+                        AutoSize="TextChanges"
+                        MinimumHeightRequest="90" />
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- OPERATING HOURS -->
+            <!-- ================================================= -->
+
+            <Border
+            BackgroundColor="#191B20"
+            Stroke="#292D35"
+            StrokeThickness="1"
+            Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label
+                    Text="Operating Hours"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="#BB86FC" />
+
+
+                    <!-- OPENING TIME -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                        Text="Opening Time"
+                        FontSize="13"
+                        TextColor="#B8BDC7" />
+
+                        <TimePicker
+                        x:Name="TpOpening"
+                        TextColor="White"
+                        BackgroundColor="#23262D" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- CLOSING TIME -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                        Text="Closing Time"
+                        FontSize="13"
+                        TextColor="#B8BDC7" />
+
+                        <TimePicker
+                        x:Name="TpClosing"
+                        TextColor="White"
+                        BackgroundColor="#23262D" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- ACCOUNT STATUS -->
+
+                    <Border
+                    BackgroundColor="#173A35"
+                    StrokeThickness="0"
+                    Padding="14,10">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <Label
+                        x:Name="LblAccountStatus"
+                        Text="Business status"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        TextColor="#03DAC6"
+                        HorizontalTextAlignment="Center" />
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- SAVE -->
+            <!-- ================================================= -->
+
+            <Button
+            Text="Save Changes"
+            Clicked="OnSaveChangesClicked"
+            BackgroundColor="#BB86FC"
+            TextColor="#111114"
+            FontAttributes="Bold"
+            FontSize="15"
+            HeightRequest="50"
+            CornerRadius="10"
+            Margin="0,5,0,0" />
+
+
+            <!-- ================================================= -->
+            <!-- CANCEL -->
+            <!-- ================================================= -->
+
+            <Button
+            Text="Cancel"
+            Clicked="OnCancelClicked"
+            BackgroundColor="#23262D"
+            TextColor="White"
+            FontAttributes="Bold"
+            HeightRequest="48"
+            CornerRadius="10" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+  
+
+</ContentPage>

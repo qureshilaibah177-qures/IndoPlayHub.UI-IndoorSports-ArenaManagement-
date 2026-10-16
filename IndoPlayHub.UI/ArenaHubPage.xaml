@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="IndoPlayHub.UI.ArenaHubPage"
+             BackgroundColor="#121212"
+             Title="IndoPlay Hub - Branch Selector">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+
+            <Label Text="Indoor Sports Management Hub" 
+                   FontSize="26" 
+                   FontAttributes="Bold" 
+                   TextColor="White" 
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Manage multi-city branches or set up a new arena." 
+                   FontSize="14" 
+                   TextColor="#AAAAAA" 
+                   HorizontalOptions="Center" 
+                   Margin="0,0,0,10"
+                   HorizontalTextAlignment="Center"/>
+
+            <!-- Option 1: Setup New Arena (Multi-city expansion wizard) -->
+            <Button Text="🏗️ Setup a New Arena (Branch)" 
+                    BackgroundColor="#1F1F1F" 
+                    TextColor="White" 
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="60"
+                    BorderColor="#6200EE"
+                    BorderWidth="1"
+                    Clicked="OnSetupNewArenaClicked"/>
+
+            <!-- Option 2: Open Dashboard (Multan Branch / Existing Branches) -->
+            <Button Text="📊 Open Dashboard (Multan Arena)" 
+                    BackgroundColor="#6200EE" 
+                    TextColor="White" 
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    HeightRequest="60"
+                    Clicked="OnOpenMultanDashboardClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.BookingsPage"
+    Title="Bookings"
+    BackgroundColor="#0B0F14">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="18"
+            MaximumWidthRequest="1100"
+            HorizontalOptions="Center">
+
+            <!-- ================================================= -->
+            <!-- HEADER -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout Spacing="4">
+
+                <Label
+                    Text="BOOKING MANAGEMENT"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#BB86FC"
+                    CharacterSpacing="1.5"/>
+
+                <Label
+                    Text="Bookings"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+
+                <Label
+                    Text="Manage your arena's customer bookings and payments."
+                    FontSize="13"
+                    TextColor="#9AA4B2"/>
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY CARDS -->
+            <!-- ================================================= -->
+
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="110,110"
+                ColumnSpacing="12"
+                RowSpacing="12">
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout
+                        Spacing="5"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="TODAY'S BOOKINGS"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2"/>
+
+                        <Label
+                            x:Name="LblTodayBookings"
+                            Text="0"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout
+                        Spacing="5"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="TODAY'S REVENUE"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2"/>
+
+                        <Label
+                            x:Name="LblTodayRevenue"
+                            Text="Rs. 0"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout
+                        Spacing="5"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="PENDING PAYMENTS"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2"/>
+
+                        <Label
+                            x:Name="LblPendingPayments"
+                            Text="0"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="#FFB74D"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout
+                        Spacing="5"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="CONFIRMED"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2"/>
+
+                        <Label
+                            x:Name="LblConfirmedBookings"
+                            Text="0"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- ADD BOOKING -->
+            <!-- ================================================= -->
+
+            <Button
+                Text="+  Add New Booking"
+                BackgroundColor="#BB86FC"
+                TextColor="#101114"
+                FontSize="14"
+                FontAttributes="Bold"
+                HeightRequest="48"
+                CornerRadius="12"
+                Clicked="OnAddBookingClicked"/>
+
+
+            <!-- ================================================= -->
+            <!-- BOOKINGS -->
+            <!-- ================================================= -->
+
+            <Label
+                Text="ALL BOOKINGS"
+                FontSize="18"
+                FontAttributes="Bold"
+                TextColor="White"
+                Margin="0,5,0,0"/>
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="8">
+
+                <CollectionView
+                    x:Name="CvBookings"
+                    SelectionMode="None"
+                    EmptyView="No bookings found.">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="#1B222C"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="14"
+                                Margin="4">
+
+                                <Grid
+                                    ColumnDefinitions="*,Auto"
+                                    RowDefinitions="Auto,Auto,Auto,Auto"
+                                    ColumnSpacing="10"
+                                    RowSpacing="5">
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding CustomerName}"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="White"/>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding TotalAmount, StringFormat='Rs. {0:N0}'}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="#03DAC6"/>
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="{Binding CourtName}"
+                                        FontSize="12"
+                                        TextColor="#BB86FC"/>
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding TimeRange}"
+                                        FontSize="11"
+                                        TextColor="#9AA4B2"/>
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="{Binding CustomerPhone}"
+                                        FontSize="11"
+                                        TextColor="#7F8A99"/>
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding PaymentStatus}"
+                                        FontSize="11"
+                                        FontAttributes="Bold"
+                                        TextColor="{Binding PaymentColor}"/>
+
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Text="{Binding BookingStatus}"
+                                        FontSize="10"
+                                        TextColor="#9AA4B2"/>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

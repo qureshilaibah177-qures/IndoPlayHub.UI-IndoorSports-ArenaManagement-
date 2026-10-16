@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ x:Class="IndoPlayHub.UI.EditCustomerProfilePage"
+ Title="Edit Profile"
+ BackgroundColor="#101114">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+        Padding="30,35"
+        Spacing="18"
+        MaximumWidthRequest="600"
+        HorizontalOptions="Center">
+
+            <!-- ================================================= -->
+            <!-- HEADER -->
+            <!-- ================================================= -->
+
+            <Label
+            Text="Edit Profile"
+            FontSize="30"
+            FontAttributes="Bold"
+            TextColor="White"
+            HorizontalOptions="Center" />
+
+            <Label
+            Text="Update your customer information."
+            FontSize="13"
+            TextColor="#8F96A3"
+            HorizontalTextAlignment="Center"
+            Margin="0,0,0,12" />
+
+
+            <!-- ================================================= -->
+            <!-- FULL NAME -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout Spacing="6">
+
+                <Label
+                Text="Full Name"
+                FontSize="13"
+                TextColor="#B8BDC7" />
+
+                <Entry
+                x:Name="TxtFullName"
+                Placeholder="Enter your full name"
+                PlaceholderColor="#70757F"
+                TextColor="White"
+                BackgroundColor="#23262D"
+                ClearButtonVisibility="WhileEditing" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- EMAIL -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout Spacing="6">
+
+                <Label
+                Text="Email Address"
+                FontSize="13"
+                TextColor="#B8BDC7" />
+
+                <Entry
+                x:Name="TxtEmail"
+                Placeholder="example@email.com"
+                PlaceholderColor="#70757F"
+                Keyboard="Email"
+                TextColor="White"
+                BackgroundColor="#23262D"
+                ClearButtonVisibility="WhileEditing" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- PHONE -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout Spacing="6">
+
+                <Label
+                Text="Phone Number"
+                FontSize="13"
+                TextColor="#B8BDC7" />
+
+                <Entry
+                x:Name="TxtPhone"
+                Placeholder="03XXXXXXXXX"
+                PlaceholderColor="#70757F"
+                Keyboard="Telephone"
+                TextColor="White"
+                BackgroundColor="#23262D"
+                ClearButtonVisibility="WhileEditing" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- PROFILE IMAGE -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout Spacing="8">
+
+                <Label
+                Text="Profile Picture"
+                FontSize="13"
+                TextColor="#B8BDC7" />
+
+                <!-- IMAGE URL -->
+
+                <Entry
+                x:Name="TxtProfileImage"
+                Placeholder="https://example.com/profile.jpg"
+                PlaceholderColor="#70757F"
+                Keyboard="Url"
+                TextColor="White"
+                BackgroundColor="#23262D"
+                ClearButtonVisibility="WhileEditing" />
+
+
+                <!-- BROWSE DEVICE -->
+
+                <Button
+                Text="📁  Browse from Device"
+                Clicked="OnBrowseProfileImageClicked"
+                BackgroundColor="#23262D"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="14"
+                HeightRequest="48"
+                CornerRadius="10"
+                Margin="0,2,0,0" />
+
+
+                <Label
+                Text="Enter an image URL or select a profile picture from your device."
+                FontSize="11"
+                TextColor="#70757F"
+                LineBreakMode="WordWrap" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- SAVE -->
+            <!-- ================================================= -->
+
+            <Button
+            Text="Save Changes"
+            Clicked="OnSaveChangesClicked"
+            BackgroundColor="#BB86FC"
+            TextColor="#111114"
+            FontAttributes="Bold"
+            FontSize="15"
+            HeightRequest="50"
+            CornerRadius="10"
+            Margin="0,8,0,0" />
+
+
+            <!-- ================================================= -->
+            <!-- CANCEL -->
+            <!-- ================================================= -->
+
+            <Button
+            Text="Cancel"
+            Clicked="OnCancelClicked"
+            BackgroundColor="#23262D"
+            TextColor="White"
+            FontAttributes="Bold"
+            HeightRequest="48"
+            CornerRadius="10" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+   
+
+</ContentPage>

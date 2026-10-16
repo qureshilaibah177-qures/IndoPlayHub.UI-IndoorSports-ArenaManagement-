@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IndoPlayHub.UI.SetupArenaPage"
+             Title="Business Setup Wizard"
+             BackgroundColor="#121212">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="25"
+            MaximumWidthRequest="700"
+            HorizontalOptions="Center">
+
+            <!-- ===================================================== -->
+            <!-- WIZARD HEADER -->
+            <!-- ===================================================== -->
+
+            <VerticalStackLayout
+                Spacing="5"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="Business Onboarding Wizard"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="Complete your facility setup step-by-step before entering the live dashboard"
+                    FontSize="12"
+                    TextColor="#9E9E9E"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+
+            <!-- ===================================================== -->
+            <!-- STEP 1: BUSINESS PROFILE -->
+            <!-- ===================================================== -->
+
+            <VerticalStackLayout
+                x:Name="Step1Layout"
+                Spacing="20">
+
+                <Frame
+                    BackgroundColor="#1E1E1E"
+                    CornerRadius="12"
+                    Padding="20"
+                    HasShadow="False"
+                    BorderColor="#2C2C2C">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label
+                            Text="Step 1 of 3: General Business Details"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC"/>
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label
+                                Text="Arena / Business Name"
+                                FontSize="12"
+                                TextColor="#B0B0B0"/>
+
+                            <Entry
+                                x:Name="TxtArenaName"
+                                Placeholder="e.g., Multan Sports Arena"
+                                TextColor="White"
+                                BackgroundColor="#252525"/>
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label
+                                Text="Official Business Email"
+                                FontSize="12"
+                                TextColor="#B0B0B0"/>
+
+                            <Entry
+                                x:Name="TxtEmail"
+                                Placeholder="owner@arena.com"
+                                Keyboard="Email"
+                                TextColor="White"
+                                BackgroundColor="#252525"/>
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label
+                                Text="Contact Number"
+                                FontSize="12"
+                                TextColor="#B0B0B0"/>
+
+                            <Entry
+                                x:Name="TxtPhone"
+                                Placeholder="0300-1234567"
+                                Keyboard="Telephone"
+                                TextColor="White"
+                                BackgroundColor="#252525"/>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <Button
+                    Text="Next: Location &amp; Timings ➡️"
+                    BackgroundColor="#BB86FC"
+                    TextColor="#121212"
+                    FontAttributes="Bold"
+                    HeightRequest="45"
+                    CornerRadius="8"
+                    Clicked="OnNextToStep2Clicked"/>
+                <!-- Already Registered -->
+                <VerticalStackLayout
+    Spacing="6"
+    HorizontalOptions="Center"
+    Margin="0,5,0,10">
+
+                    <Label
+        Text="Already registered?"
+        TextColor="#9E9E9E"
+        FontSize="12"
+        HorizontalOptions="Center"/>
+
+                    <Label
+        Text="Login to your existing account"
+        TextColor="#BB86FC"
+        FontAttributes="Bold"
+        FontSize="13"
+        HorizontalOptions="Center">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                Tapped="OnAlreadyRegisteredClicked"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+
+            <!-- ===================================================== -->
+            <!-- STEP 2: LOCATION & TIMINGS -->
+            <!-- ===================================================== -->
+
+            <VerticalStackLayout
+                x:Name="Step2Layout"
+                Spacing="20"
+                IsVisible="False">
+
+                <Frame
+                    BackgroundColor="#1E1E1E"
+                    CornerRadius="12"
+                    Padding="20"
+                    HasShadow="False"
+                    BorderColor="#2C2C2C">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label
+                            Text="Step 2 of 3: Location &amp; Operating Hours"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC"/>
+
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label
+                                Text="Complete Address / Location"
+                                FontSize="12"
+                                TextColor="#B0B0B0"/>
+
+                            <Entry
+                                x:Name="TxtLocation"
+                                Placeholder="e.g., Bosan Road, Multan"
+                                TextColor="White"
+                                BackgroundColor="#252525"/>
+                        </VerticalStackLayout>
+
+
+                        <Grid
+                            ColumnDefinitions="*, *"
+                            ColumnSpacing="15">
+
+                            <VerticalStackLayout
+                                Grid.Column="0"
+                                Spacing="5">
+
+                                <Label
+                                    Text="Opening Time"
+                                    FontSize="12"
+                                    TextColor="#B0B0B0"/>
+
+                                <TimePicker
+                                    x:Name="TpOpening"
+                                    TextColor="White"
+                                    BackgroundColor="#252525"/>
+
+                            </VerticalStackLayout>
+
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="5">
+
+                                <Label
+                                    Text="Closing Time"
+                                    FontSize="12"
+                                    TextColor="#B0B0B0"/>
+
+                                <TimePicker
+                                    x:Name="TpClosing"
+                                    TextColor="White"
+                                    BackgroundColor="#252525"/>
+
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <Grid
+                    ColumnDefinitions="*, *"
+                    ColumnSpacing="15">
+
+                    <Button
+                        Grid.Column="0"
+                        Text="⬅️ Back"
+                        BackgroundColor="#252525"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="45"
+                        CornerRadius="8"
+                        Clicked="OnBackToStep1Clicked"/>
+
+                    <Button
+                        Grid.Column="1"
+                        Text="Next: Sports Setup ➡️"
+                        BackgroundColor="#BB86FC"
+                        TextColor="#121212"
+                        FontAttributes="Bold"
+                        HeightRequest="45"
+                        CornerRadius="8"
+                        Clicked="OnNextToStep3Clicked"/>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+
+            <!-- ===================================================== -->
+            <!-- STEP 3: ALL 15 SPORTS -->
+            <!-- ===================================================== -->
+
+            <VerticalStackLayout
+                x:Name="Step3Layout"
+                Spacing="20"
+                IsVisible="False">
+
+                <Frame
+                    BackgroundColor="#1E1E1E"
+                    CornerRadius="12"
+                    Padding="20"
+                    HasShadow="False"
+                    BorderColor="#2C2C2C">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label
+                            Text="Step 3 of 3: Sports &amp; Court Quantities"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC"/>
+
+                        <Label
+                            Text="Select every sport or facility service your arena provides, then enter its quantity."
+                            FontSize="12"
+                            TextColor="#9E9E9E"/>
+
+
+                        <!-- ================================================= -->
+                        <!-- 15 SPORTS ARE LOADED HERE -->
+                        <!-- ================================================= -->
+
+                        <CollectionView
+    x:Name="CvSports"
+    SelectionMode="None">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Grid
+                Padding="5,8"
+                ColumnDefinitions="Auto,*,90"
+                ColumnSpacing="12">
+
+                                        <CheckBox
+                    Grid.Column="0"
+                    IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                    Color="#BB86FC"
+                    VerticalOptions="Center"/>
+
+                                        <VerticalStackLayout
+                    Grid.Column="1"
+                    Spacing="2"
+                    VerticalOptions="Center">
+
+                                            <Label
+                        Text="{Binding CategoryName}"
+                        TextColor="White"
+                        FontSize="14"
+                        FontAttributes="Bold"/>
+
+                                            <Label
+                        Text="{Binding Description}"
+                        TextColor="#9E9E9E"
+                        FontSize="10"/>
+
+                                        </VerticalStackLayout>
+
+                                        <Entry
+                    Grid.Column="2"
+                    Text="{Binding Quantity, Mode=TwoWay}"
+                    Placeholder="Qty"
+                    Keyboard="Numeric"
+                    TextColor="White"
+                    BackgroundColor="#252525"
+                    HeightRequest="38"
+                    HorizontalTextAlignment="Center"/>
+
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- ===================================================== -->
+                <!-- STEP 3 BUTTONS -->
+                <!-- ===================================================== -->
+
+                <Grid
+                    ColumnDefinitions="*, *"
+                    ColumnSpacing="15">
+
+                    <Button
+                        Grid.Column="0"
+                        Text="⬅️ Back"
+                        BackgroundColor="#252525"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="45"
+                        CornerRadius="8"
+                        Clicked="OnBackToStep2Clicked"/>
+
+                    <Button
+                        Grid.Column="1"
+                        Text="Finish &amp; Launch Dashboard"
+                        BackgroundColor="#BB86FC"
+                        TextColor="#121212"
+                        FontAttributes="Bold"
+                        HeightRequest="45"
+                        CornerRadius="8"
+                        Clicked="OnFinishSetupClicked"/>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.DashboardPage"
+    Title="Admin Dashboard"
+    BackgroundColor="#0B0F14">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="18"
+            MaximumWidthRequest="1200"
+            HorizontalOptions="Center">
+
+            <!-- ===================================================== -->
+            <!-- HEADER -->
+            <!-- ===================================================== -->
+
+            <Grid
+                ColumnDefinitions="*,Auto"
+                ColumnSpacing="12"
+                Margin="0,8,0,0">
+
+                <VerticalStackLayout
+                    Grid.Column="0"
+                    Spacing="3">
+
+                    <Label
+                        Text="ADMIN DASHBOARD"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#BB86FC"
+                        CharacterSpacing="1.5" />
+
+                    <Label
+                        x:Name="LblWelcome"
+                        Text="Welcome back!"
+                        FontSize="27"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        x:Name="LblArenaSubtitle"
+                        Text="Manage your arena performance and bookings."
+                        FontSize="13"
+                        TextColor="#9AA4B2" />
+
+                </VerticalStackLayout>
+
+                <Border
+                    Grid.Column="1"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    StrokeThickness="1"
+                    Stroke="#29313D"
+                    BackgroundColor="#151B23"
+                    StrokeShape="RoundRectangle 24">
+
+                    <Border.GestureRecognizers>
+
+                        <TapGestureRecognizer
+                            Tapped="OnNotificationsClicked" />
+
+                    </Border.GestureRecognizers>
+
+                    <Label
+                        Text="🔔"
+                        FontSize="19"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- ARENA HERO -->
+            <!-- ===================================================== -->
+
+            <Border
+                Stroke="#29313D"
+                StrokeThickness="1"
+                BackgroundColor="#151B23"
+                StrokeShape="RoundRectangle 18"
+                Padding="0">
+
+                <Grid
+                    RowDefinitions="190,Auto">
+
+                    <!-- Arena Cover -->
+
+                    <Grid Grid.Row="0">
+
+                        <Image
+                            x:Name="ImgArenaCover"
+                            Aspect="AspectFill"
+                            Opacity="0.85" />
+
+                        <BoxView
+                            BackgroundColor="#05070A"
+                            Opacity="0.45" />
+
+                        <VerticalStackLayout
+                            Padding="20"
+                            VerticalOptions="End"
+                            Spacing="4">
+
+                            <Label
+                                x:Name="LblArenaName"
+                                Text="Your Arena"
+                                FontSize="26"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                x:Name="LblArenaLocation"
+                                Text="Location"
+                                FontSize="13"
+                                TextColor="#D0D5DD" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+
+                    <!-- Arena Details -->
+
+                    <Grid
+                        Grid.Row="1"
+                        Padding="16"
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10">
+
+                        <VerticalStackLayout
+                            Grid.Column="0"
+                            Spacing="3">
+
+                            <Label
+                                Text="BUSINESS HOURS"
+                                FontSize="10"
+                                FontAttributes="Bold"
+                                TextColor="#7F8A99" />
+
+                            <Label
+                                x:Name="LblBusinessHours"
+                                Text="08:00 - 23:00"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="3">
+
+                            <Label
+                                Text="STATUS"
+                                FontSize="10"
+                                FontAttributes="Bold"
+                                TextColor="#7F8A99" />
+
+                            <Label
+                                x:Name="LblSetupStatus"
+                                Text="Active"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="#03DAC6" />
+
+                        </VerticalStackLayout>
+
+
+                        <Button
+                            Grid.Column="2"
+                            Text="⚙ Edit"
+                            BackgroundColor="#252D38"
+                            TextColor="#BB86FC"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            CornerRadius="9"
+                            HeightRequest="38"
+                            Clicked="OnEditBusinessDetailsClicked" />
+
+                    </Grid>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ===================================================== -->
+            <!-- KPI CARDS -->
+            <!-- ===================================================== -->
+
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto,Auto,Auto"
+                ColumnSpacing="12"
+                RowSpacing="12">
+
+
+                <!-- Today's Bookings -->
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="📅  TODAY'S BOOKINGS"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2" />
+
+                        <Label
+                            x:Name="LblTodayBookings"
+                            Text="0"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                        <Label
+                            Text="Bookings today"
+                            FontSize="11"
+                            TextColor="#6F7A89" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- Today's Revenue -->
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="💰  TODAY'S REVENUE"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2" />
+
+                        <Label
+                            x:Name="LblTodayRevenue"
+                            Text="Rs. 0"
+                            FontSize="25"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6" />
+
+                        <Label
+                            Text="Confirmed bookings"
+                            FontSize="11"
+                            TextColor="#6F7A89" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- Total Courts -->
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="🏟️  TOTAL COURTS"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2" />
+
+                        <Label
+                            x:Name="LblTotalCourts"
+                            Text="0"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#FFB74D" />
+
+                        <Label
+                            Text="Registered courts"
+                            FontSize="11"
+                            TextColor="#6F7A89" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- Available Courts -->
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="🟢  AVAILABLE COURTS"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2" />
+
+                        <Label
+                            x:Name="LblAvailableCourts"
+                            Text="0"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6" />
+
+                        <Label
+                            Text="Currently available"
+                            FontSize="11"
+                            TextColor="#6F7A89" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- Pending Payments -->
+
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="💳  PENDING PAYMENTS"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2" />
+
+                        <Label
+                            x:Name="LblPendingPayments"
+                            Text="0"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#FFB74D" />
+
+                        <Label
+                            Text="Awaiting payment"
+                            FontSize="11"
+                            TextColor="#6F7A89" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- Today's Customers -->
+
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    BackgroundColor="#151B23"
+                    Stroke="#29313D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15">
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="👥  TODAY'S CUSTOMERS"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#9AA4B2" />
+
+                        <Label
+                            x:Name="LblTodayCustomers"
+                            Text="0"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="#64B5F6" />
+
+                        <Label
+                            Text="Unique customers"
+                            FontSize="11"
+                            TextColor="#6F7A89" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- SPORTS & COURTS HEADER -->
+            <!-- ===================================================== -->
+
+            <Grid
+    ColumnDefinitions="*,Auto,Auto"
+    ColumnSpacing="8"
+    Margin="0,8,0,0">
+
+                <VerticalStackLayout
+        Grid.Column="0"
+        Spacing="2">
+
+                    <Label
+            Text="SPORTS &amp; COURTS"
+            FontSize="19"
+            FontAttributes="Bold"
+            TextColor="White" />
+
+                    <Label
+            Text="Your registered sports and playing areas"
+            FontSize="12"
+            TextColor="#7F8A99" />
+
+                </VerticalStackLayout>
+
+                <Button
+        Grid.Column="1"
+        Text="＋ Add Sport"
+        BackgroundColor="#1B222C"
+        TextColor="#BB86FC"
+        BorderColor="#BB86FC"
+        BorderWidth="1"
+        FontSize="11"
+        FontAttributes="Bold"
+        CornerRadius="9"
+        HeightRequest="40"
+        Padding="12,0"
+        Clicked="OnManageSportsClicked" />
+
+                <Button
+        Grid.Column="2"
+        Text="View All"
+        BackgroundColor="Transparent"
+        TextColor="#BB86FC"
+        FontSize="12"
+        Clicked="OnGoToCourtsClicked" />
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- SPORT CARDS -->
+            <!-- ===================================================== -->
+
+            <CollectionView
+                x:Name="CvSports"
+                SelectionMode="None">
+
+                <CollectionView.ItemsLayout>
+
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="16" />
+
+                </CollectionView.ItemsLayout>
+
+
+                <!-- EMPTY VIEW -->
+
+                <CollectionView.EmptyView>
+
+                    <Border
+                        BackgroundColor="#151B23"
+                        Stroke="#29313D"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="25">
+
+                        <VerticalStackLayout
+                            Spacing="8"
+                            HorizontalOptions="Center">
+
+                            <Label
+                                Text="🏟️"
+                                FontSize="35"
+                                HorizontalOptions="Center" />
+
+                            <Label
+                                Text="No sports configured"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                HorizontalOptions="Center" />
+
+                            <Label
+                                Text="Complete your arena setup to add playing areas."
+                                FontSize="11"
+                                TextColor="#7F8A99"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </CollectionView.EmptyView>
+
+
+                <!-- ================================================= -->
+                <!-- SPORT CARD TEMPLATE -->
+                <!-- ================================================= -->
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Border
+                            BackgroundColor="#151B23"
+                            Stroke="#29313D"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 18"
+                            Padding="0">
+
+                            <Grid
+                                RowDefinitions="190,Auto">
+
+
+                                <!-- ================================= -->
+                                <!-- SPORT IMAGE -->
+                                <!-- ================================= -->
+
+                                <Grid
+    Grid.Row="0"
+    HeightRequest="190"
+    HorizontalOptions="Fill"
+    VerticalOptions="Fill">
+
+                                    <Image
+        Source="{Binding ImageSource}"
+        Aspect="AspectFill"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill" />
+
+                                    <BoxView
+        BackgroundColor="#05070A"
+        Opacity="0.30"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill" />
+
+                                    <!-- Sport badge -->
+
+                                    <Border
+        BackgroundColor="#BB86FC"
+        StrokeThickness="0"
+        StrokeShape="RoundRectangle 9"
+        Padding="9,5"
+        HorizontalOptions="Start"
+        VerticalOptions="Start"
+        Margin="12">
+
+                                        <Label
+            Text="{Binding SportName}"
+            FontSize="10"
+            FontAttributes="Bold"
+            TextColor="White" />
+
+                                    </Border>
+
+                                    <!-- Sport title -->
+
+                                    <VerticalStackLayout
+        Padding="18"
+        VerticalOptions="End"
+        Spacing="3">
+
+                                        <Label
+            Text="{Binding SportName}"
+            FontSize="25"
+            FontAttributes="Bold"
+            TextColor="White" />
+
+                                        <Label
+            Text="{Binding ArenaName}"
+            FontSize="12"
+            TextColor="#D0D5DD" />
+
+                                        <Label
+            Text="{Binding LocationText}"
+            FontSize="11"
+            TextColor="#B8C0CB" />
+
+                                    </VerticalStackLayout>
+
+                                </Grid>
+
+
+                                <!-- ================================= -->
+                                <!-- SPORT INFORMATION -->
+                                <!-- ================================= -->
+
+                                <VerticalStackLayout
+                                    Grid.Row="1"
+                                    Padding="16"
+                                    Spacing="14">
+
+
+                                    <!-- ================================= -->
+                                    <!-- COURT STATISTICS -->
+                                    <!-- ================================= -->
+
+                                    <Grid
+                                        ColumnDefinitions="*,*,*"
+                                        ColumnSpacing="8">
+
+
+                                        <!-- Total -->
+
+                                        <VerticalStackLayout
+                                            Grid.Column="0"
+                                            Spacing="2">
+
+                                            <Label
+                                                Text="TOTAL"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding TotalCourts}"
+                                                FontSize="21"
+                                                FontAttributes="Bold"
+                                                TextColor="#FFB74D" />
+
+                                            <Label
+                                                Text="Courts"
+                                                FontSize="10"
+                                                TextColor="#6F7A89" />
+
+                                        </VerticalStackLayout>
+
+
+                                        <!-- Available -->
+
+                                        <VerticalStackLayout
+                                            Grid.Column="1"
+                                            Spacing="2">
+
+                                            <Label
+                                                Text="AVAILABLE"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding AvailableCourts}"
+                                                FontSize="21"
+                                                FontAttributes="Bold"
+                                                TextColor="#03DAC6" />
+
+                                            <Label
+                                                Text="Courts"
+                                                FontSize="10"
+                                                TextColor="#6F7A89" />
+
+                                        </VerticalStackLayout>
+
+
+                                        <!-- Booked -->
+
+                                        <VerticalStackLayout
+                                            Grid.Column="2"
+                                            Spacing="2">
+
+                                            <Label
+                                                Text="BOOKED"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding BookedCourts}"
+                                                FontSize="21"
+                                                FontAttributes="Bold"
+                                                TextColor="#64B5F6" />
+
+                                            <Label
+                                                Text="Today"
+                                                FontSize="10"
+                                                TextColor="#6F7A89" />
+
+                                        </VerticalStackLayout>
+
+                                    </Grid>
+
+
+                                    <!-- Divider -->
+
+                                    <BoxView
+                                        HeightRequest="1"
+                                        BackgroundColor="#29313D" />
+
+
+                                    <!-- ================================= -->
+                                    <!-- BUSINESS INFORMATION -->
+                                    <!-- ================================= -->
+
+                                    <Grid
+                                        ColumnDefinitions="*,*"
+                                        ColumnSpacing="15"
+                                        RowDefinitions="Auto,Auto"
+                                        RowSpacing="12">
+
+
+                                        <!-- Business Hours -->
+
+                                        <VerticalStackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Spacing="3">
+
+                                            <Label
+                                                Text="BUSINESS HOURS"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding BusinessHours}"
+                                                FontSize="12"
+                                                FontAttributes="Bold"
+                                                TextColor="White" />
+
+                                        </VerticalStackLayout>
+
+
+                                        <!-- Court Rate -->
+
+                                        <VerticalStackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Spacing="3">
+
+                                            <Label
+                                                Text="COURT RATE"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding CourtRateText}"
+                                                FontSize="12"
+                                                FontAttributes="Bold"
+                                                TextColor="#03DAC6" />
+
+                                        </VerticalStackLayout>
+
+
+                                        <!-- Area / Location -->
+
+                                        <VerticalStackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Spacing="3">
+
+                                            <Label
+                                                Text="AREA / LOCATION"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding LocationText}"
+                                                FontSize="11"
+                                                TextColor="#D0D5DD"
+                                                LineBreakMode="TailTruncation" />
+
+                                        </VerticalStackLayout>
+
+
+                                        <!-- Sport -->
+
+                                        <VerticalStackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Spacing="3">
+
+                                            <Label
+                                                Text="SPORT"
+                                                FontSize="9"
+                                                FontAttributes="Bold"
+                                                TextColor="#7F8A99" />
+
+                                            <Label
+                                                Text="{Binding SportName}"
+                                                FontSize="11"
+                                                FontAttributes="Bold"
+                                                TextColor="White" />
+
+                                        </VerticalStackLayout>
+
+                                    </Grid>
+
+
+                                    <!-- Divider -->
+
+                                    <BoxView
+                                        HeightRequest="1"
+                                        BackgroundColor="#29313D" />
+
+
+                                    <!-- ================================= -->
+                                    <!-- TODAY'S SCHEDULE -->
+                                    <!-- ================================= -->
+
+                                    <VerticalStackLayout
+                                        Spacing="5">
+
+                                        <Grid
+                                            ColumnDefinitions="*,Auto">
+
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="TODAY'S SCHEDULE"
+                                                FontSize="10"
+                                                FontAttributes="Bold"
+                                                TextColor="#9AA4B2" />
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding TodayScheduleCountText}"
+                                                FontSize="10"
+                                                FontAttributes="Bold"
+                                                TextColor="#BB86FC" />
+
+                                        </Grid>
+
+                                        <Label
+                                            Text="{Binding TodayScheduleText}"
+                                            FontSize="11"
+                                            TextColor="#D0D5DD"
+                                            LineBreakMode="TailTruncation" />
+
+                                    </VerticalStackLayout>
+
+
+                                    <!-- ================================= -->
+                                    <!-- UPCOMING BOOKINGS -->
+                                    <!-- ================================= -->
+
+                                    <VerticalStackLayout
+                                        Spacing="5">
+
+                                        <Label
+                                            Text="UPCOMING BOOKINGS"
+                                            FontSize="10"
+                                            FontAttributes="Bold"
+                                            TextColor="#9AA4B2" />
+
+                                        <Label
+                                            Text="{Binding UpcomingBookingsText}"
+                                            FontSize="11"
+                                            TextColor="#D0D5DD"
+                                            LineBreakMode="TailTruncation" />
+
+                                    </VerticalStackLayout>
+
+
+                                    <!-- ================================= -->
+                                    <!-- MANAGEMENT BUTTONS -->
+                                    <!-- ================================= -->
+
+                                    <Grid
+                                        ColumnDefinitions="*,*"
+                                        ColumnSpacing="10">
+
+                                        <Button
+    Grid.Column="0"
+    Text="✏ Edit Sport"
+    BackgroundColor="#252D38"
+    TextColor="#BB86FC"
+    FontSize="11"
+    FontAttributes="Bold"
+    CornerRadius="9"
+    HeightRequest="42"
+    Clicked="OnEditSportClicked" />
+                                        <Button
+                                            Grid.Column="1"
+                                            Text="📅 Manage Bookings"
+                                            BackgroundColor="#BB86FC"
+                                            TextColor="#0B0F14"
+                                            FontSize="11"
+                                            FontAttributes="Bold"
+                                            CornerRadius="9"
+                                            HeightRequest="42"
+                                            Clicked="OnGoToBookingsClicked" />
+
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+
+            <!-- ===================================================== -->
+            <!-- TODAY'S BOOKINGS -->
+            <!-- ===================================================== -->
+
+            <Grid
+                ColumnDefinitions="*,Auto"
+                Margin="0,8,0,0">
+
+                <VerticalStackLayout
+                    Grid.Column="0"
+                    Spacing="2">
+
+                    <Label
+                        Text="TODAY'S BOOKINGS"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Live booking activity"
+                        FontSize="12"
+                        TextColor="#7F8A99" />
+
+                </VerticalStackLayout>
+
+                <Button
+                    Grid.Column="1"
+                    Text="View All"
+                    BackgroundColor="Transparent"
+                    TextColor="#BB86FC"
+                    FontSize="12"
+                    Clicked="OnGoToBookingsClicked" />
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- BOOKING LIST -->
+            <!-- ===================================================== -->
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="8">
+
+                <CollectionView
+                    x:Name="CvTodayBookings"
+                    SelectionMode="None"
+                    EmptyView="No bookings scheduled for today.">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="#1B222C"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="12"
+                                Margin="4">
+
+                                <Grid
+                                    ColumnDefinitions="*,Auto"
+                                    RowDefinitions="Auto,Auto,Auto"
+                                    ColumnSpacing="10"
+                                    RowSpacing="4">
+
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding CustomerName}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding TotalAmount, StringFormat='Rs. {0:N0}'}"
+                                        FontSize="13"
+                                        FontAttributes="Bold"
+                                        TextColor="#03DAC6" />
+
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="{Binding CourtName}"
+                                        FontSize="11"
+                                        TextColor="#9AA4B2" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding TimeRange}"
+                                        FontSize="11"
+                                        TextColor="#9AA4B2" />
+
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="{Binding CustomerPhone}"
+                                        FontSize="10"
+                                        TextColor="#6F7A89" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding PaymentStatus}"
+                                        FontSize="10"
+                                        FontAttributes="Bold"
+                                        TextColor="{Binding PaymentColor}" />
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </Border>
+
+
+            <!-- ===================================================== -->
+            <!-- QUICK MANAGEMENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                Text="QUICK MANAGEMENT"
+                FontSize="18"
+                FontAttributes="Bold"
+                TextColor="White"
+                Margin="0,8,0,0" />
+
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10">
+
+                <Button
+                    Grid.Column="0"
+                    Text="🏟️ Courts"
+                    BackgroundColor="#1B222C"
+                    TextColor="White"
+                    FontSize="12"
+                    CornerRadius="10"
+                    HeightRequest="48"
+                    Clicked="OnGoToCourtsClicked" />
+
+                <Button
+                    Grid.Column="1"
+                    Text="📅 Bookings"
+                    BackgroundColor="#1B222C"
+                    TextColor="White"
+                    FontSize="12"
+                    CornerRadius="10"
+                    HeightRequest="48"
+                    Clicked="OnGoToBookingsClicked" />
+
+                <Button
+                    Grid.Column="2"
+                    Text="🍔 Menu"
+                    BackgroundColor="#1B222C"
+                    TextColor="White"
+                    FontSize="12"
+                    CornerRadius="10"
+                    HeightRequest="48"
+                    Clicked="OnGoToMenuClicked" />
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- FOOTER -->
+            <!-- ===================================================== -->
+
+            <Label
+                Text="IndoPlayHub • Arena Management"
+                FontSize="10"
+                TextColor="#4F5967"
+                HorizontalOptions="Center"
+                Margin="0,10,0,20" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

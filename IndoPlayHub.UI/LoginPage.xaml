@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IndoPlayHub.UI.LoginPage"
+             Title="Business Portal | Login"
+             BackgroundColor="#121212">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="40" Spacing="25" MaximumWidthRequest="500" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <!-- ================= PART 1: LOGIN SECTION ================= -->
+            <VerticalStackLayout x:Name="LoginSection" Spacing="25">
+
+                <!-- Header Section -->
+                <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                    <Label Text="Welcome Back!" 
+                           FontSize="28" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center"/>
+                    <Label Text="Sign in to manage your indoor arena" 
+                           FontSize="14" 
+                           TextColor="#9E9E9E" 
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Login Form Card -->
+                <Frame BackgroundColor="#1E1E1E" 
+                       CornerRadius="12" 
+                       HasShadow="False" 
+                       BorderColor="#2C2C2C" 
+                       Padding="25">
+                    <VerticalStackLayout Spacing="20">
+
+                        <!-- Email Input -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Business Email" FontSize="12" TextColor="#B0B0B0"/>
+                            <Entry x:Name="TxtLoginEmail" 
+                                   Text="multansports@indoplayhub.com"
+                                   Placeholder="owner@domain.com" 
+                                   Keyboard="Email" 
+                                   TextColor="White" 
+                                   BackgroundColor="#252525"/>
+                        </VerticalStackLayout>
+
+                        <!-- Password Input -->
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+        Text="Password"
+        FontSize="12"
+        TextColor="#B0B0B0"/>
+
+                            <!-- Password + Show/Hide Button -->
+                            <Grid
+        ColumnDefinitions="*,Auto"
+        ColumnSpacing="0"
+        HeightRequest="48">
+
+                                <Entry
+            x:Name="TxtLoginPassword"
+            Grid.Column="0"
+            Text="123456"
+            Placeholder="Enter your password"
+            IsPassword="True"
+            TextColor="White"
+            PlaceholderColor="#777777"
+            BackgroundColor="#252525"
+            VerticalOptions="Fill"/>
+
+                                <Button
+            x:Name="BtnShowPassword"
+            Grid.Column="1"
+            Text="👁"
+            FontSize="18"
+            BackgroundColor="#252525"
+            TextColor="#BB86FC"
+            WidthRequest="48"
+            HeightRequest="48"
+            Padding="0"
+            CornerRadius="0"
+            Clicked="OnShowPasswordClicked"/>
+
+                            </Grid>
+
+                            <!-- Forgot Password Option -->
+                            <Label
+        x:Name="LblForgotPassword"
+        Text="Forgot Password?"
+        TextColor="#BB86FC"
+        FontSize="12"
+        HorizontalOptions="End"
+        Margin="0,4,0,0"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- Submit Button -->
+                        <Button Text="Login to Dashboard" 
+                                BackgroundColor="#BB86FC" 
+                                TextColor="#121212" 
+                                FontAttributes="Bold" 
+                                HeightRequest="48" 
+                                CornerRadius="8" 
+                                Clicked="OnLoginClicked" 
+                                Margin="0,10,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Navigation to Registration -->
+                <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Label Text="Don't have an arena registered?" TextColor="#9E9E9E" FontSize="13"/>
+                    <Label Text="Register here" TextColor="#BB86FC" FontAttributes="Bold" FontSize="13">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnGoToRegisterClicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+
+            <!-- ================= PART 2: PROFESSIONAL DASHBOARD SECTION ================= -->
+            <VerticalStackLayout x:Name="DashboardSection" Spacing="20" IsVisible="False">
+
+                <!-- Top Header with Welcome Message & Perfectly Aligned Logout -->
+                <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                    <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                        <Label x:Name="LblArenaWelcome" Text="Welcome, Arena" FontSize="22" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="Live Operations &amp; Management Dashboard" FontSize="12" TextColor="#9E9E9E"/>
+                    </VerticalStackLayout>
+                    <Button Grid.Column="1" 
+                            Text="Logout" 
+                            BackgroundColor="#CF6679" 
+                            TextColor="White" 
+                            FontSize="12" 
+                            HeightRequest="38" 
+                            CornerRadius="6" 
+                            Clicked="OnLogoutClicked" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="End"/>
+                </Grid>
+
+                <!-- Offline-Friendly Banner Card -->
+                <Frame BackgroundColor="#1E1E1E" CornerRadius="12" Padding="16" HasShadow="False" BorderColor="#2C2C2C">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Premier Indoor Sports Facility" FontSize="14" FontAttributes="Bold" TextColor="#BB86FC"/>
+                        <Label Text="Status: Open and Active • Live Portal" FontSize="11" TextColor="#9E9E9E"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Professional KPI Cards Grid -->
+                <Grid ColumnDefinitions="*, *, *" ColumnSpacing="10">
+                    <!-- Card 1 -->
+                    <Frame Grid.Column="0" BackgroundColor="#1E1E1E" CornerRadius="10" Padding="12" HasShadow="False" BorderColor="#2C2C2C">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="BOOKINGS" FontSize="10" FontAttributes="Bold" TextColor="#9E9E9E"/>
+                            <Label Text="0" FontSize="20" FontAttributes="Bold" TextColor="#BB86FC"/>
+                            <Label Text="No active yet" FontSize="9" TextColor="#03DAC6"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Card 2 -->
+                    <Frame Grid.Column="1" BackgroundColor="#1E1E1E" CornerRadius="10" Padding="12" HasShadow="False" BorderColor="#2C2C2C">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="REVENUE" FontSize="10" FontAttributes="Bold" TextColor="#9E9E9E"/>
+                            <Label Text="Rs. 0" FontSize="18" FontAttributes="Bold" TextColor="#03DAC6"/>
+                            <Label Text="Today's total" FontSize="9" TextColor="#9E9E9E"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Card 3 -->
+                    <Frame Grid.Column="2" BackgroundColor="#1E1E1E" CornerRadius="10" Padding="12" HasShadow="False" BorderColor="#2C2C2C">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="OCCUPANCY" FontSize="10" FontAttributes="Bold" TextColor="#9E9E9E"/>
+                            <Label Text="0%" FontSize="20" FontAttributes="Bold" TextColor="#FFB74D"/>
+                            <Label Text="Available" FontSize="9" TextColor="#FFB74D"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Quick Management Actions Frame -->
+                <Frame BackgroundColor="#1E1E1E" CornerRadius="10" Padding="15" HasShadow="False" BorderColor="#2C2C2C">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Facility &amp; Inventory Management" FontAttributes="Bold" TextColor="#BB86FC" FontSize="13"/>
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                            <Button Grid.Column="0" Text="Courts" BackgroundColor="#252525" TextColor="White" FontSize="12" HeightRequest="42" CornerRadius="8" Clicked="OnManageCourtsClicked"/>
+                            <Button Grid.Column="1" Text="Menu / Items" BackgroundColor="#252525" TextColor="White" FontSize="12" HeightRequest="42" CornerRadius="8" Clicked="OnManageMenuClicked"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

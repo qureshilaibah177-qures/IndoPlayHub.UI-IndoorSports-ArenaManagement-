@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="IndoPlayHub.UI.CustomerMenuPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Food &amp; Drinks"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- HEADER -->
+        <!-- ===================================================== -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="20,18,20,12"
+            ColumnDefinitions="Auto,*,Auto"
+            ZIndex="10">
+
+            <!-- BACK -->
+
+            <Border
+                Grid.Column="0"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="‹"
+                    FontSize="30"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- TITLE -->
+
+            <Label
+                Grid.Column="1"
+                Text="Food &amp; Drinks"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+
+            <!-- CART COUNT -->
+
+            <Border
+                Grid.Column="2"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="#12302D"
+                Stroke="#1E514C"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Grid>
+
+                    <Label
+                        Text="🛒"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+
+                    <Border
+                        x:Name="CartBadge"
+                        WidthRequest="19"
+                        HeightRequest="19"
+                        BackgroundColor="#03DAC6"
+                        StrokeThickness="0"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="0,2,1,0"
+                        IsVisible="False">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            x:Name="LblCartCount"
+                            Text="0"
+                            FontSize="9"
+                            FontAttributes="Bold"
+                            TextColor="#101114"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+
+                    </Border>
+
+                </Grid>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnCartTapped" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+        </Grid>
+
+
+        <!-- ===================================================== -->
+        <!-- MAIN CONTENT -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout
+                Padding="20,8,20,130"
+                Spacing="18">
+
+
+                <!-- ================================================= -->
+                <!-- INTRO -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Label
+                        x:Name="LblArenaName"
+                        Text="Arena Menu"
+                        FontSize="27"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Grab something before or after your game."
+                        FontSize="14"
+                        TextColor="#8F96A3" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- SEARCH -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="14,0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="10">
+
+                        <Label
+                            Text="⌕"
+                            FontSize="24"
+                            TextColor="#8F96A3"
+                            VerticalOptions="Center" />
+
+                        <Entry
+                            x:Name="TxtSearch"
+                            Grid.Column="1"
+                            Placeholder="Search food, drinks or items..."
+                            PlaceholderColor="#70757F"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            FontSize="14"
+                            TextChanged="OnSearchTextChanged"
+                            ClearButtonVisibility="WhileEditing" />
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- CATEGORY FILTER -->
+                <!-- ================================================= -->
+
+                <CollectionView
+                    x:Name="CvCategories"
+                    HeightRequest="48"
+                    SelectionMode="None"
+                    HorizontalScrollBarVisibility="Never">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Horizontal"
+                            ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="{Binding BackgroundColor}"
+                                Stroke="{Binding BorderColor}"
+                                StrokeThickness="1"
+                                Padding="16,9">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="18" />
+                                </Border.StrokeShape>
+
+                                <Label
+                                    Text="{Binding CategoryName}"
+                                    TextColor="{Binding TextColor}"
+                                    FontSize="13"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center" />
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="OnCategoryTapped"
+                                        CommandParameter="{Binding}" />
+                                </Border.GestureRecognizers>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <!-- ================================================= -->
+                <!-- LOADING -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    x:Name="LoadingLayout"
+                    IsVisible="False"
+                    Spacing="12"
+                    Padding="20">
+
+                    <ActivityIndicator
+                        x:Name="LoadingIndicator"
+                        IsRunning="False"
+                        Color="#03DAC6"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Loading menu..."
+                        FontSize="14"
+                        TextColor="#8F96A3"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- EMPTY STATE -->
+                <!-- ================================================= -->
+
+                <Border
+                    x:Name="EmptyStateLayout"
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="30"
+                    IsVisible="False">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="8"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="🍽️"
+                            FontSize="34"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            Text="No menu items found"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center" />
+
+                        <Label
+                            x:Name="LblEmptyMessage"
+                            Text="This arena has no available menu items right now."
+                            FontSize="13"
+                            TextColor="#8F96A3"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- MENU ITEMS -->
+                <!-- ================================================= -->
+
+                <CollectionView
+                    x:Name="CvMenuItems"
+                    SelectionMode="None">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="#191B20"
+                                Stroke="#292D35"
+                                StrokeThickness="1"
+                                Padding="12">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="18" />
+                                </Border.StrokeShape>
+
+                                <Grid
+                                    ColumnDefinitions="105,*,Auto"
+                                    ColumnSpacing="14"
+                                    MinimumHeightRequest="105">
+
+
+                                    <!-- ===================================== -->
+                                    <!-- IMAGE -->
+                                    <!-- ===================================== -->
+
+                                    <Border
+                                        Grid.Column="0"
+                                        WidthRequest="105"
+                                        HeightRequest="105"
+                                        BackgroundColor="#23262D">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="14" />
+                                        </Border.StrokeShape>
+
+                                        <Grid>
+
+                                            <!-- IMAGE -->
+
+                                            <Image
+                                                Source="{Binding ImageUrl}"
+                                                Aspect="AspectFill"
+                                                WidthRequest="105"
+                                                HeightRequest="105">
+
+                                                <Image.Triggers>
+
+                                                    <DataTrigger
+                                                        TargetType="Image"
+                                                        Binding="{Binding HasImage}"
+                                                        Value="False">
+
+                                                        <Setter
+                                                            Property="IsVisible"
+                                                            Value="False" />
+
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
+
+                                            </Image>
+
+
+                                            <!-- FALLBACK -->
+
+                                            <Label
+                                                Text="🍽️"
+                                                FontSize="32"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center">
+
+                                                <Label.Triggers>
+
+                                                    <DataTrigger
+                                                        TargetType="Label"
+                                                        Binding="{Binding HasImage}"
+                                                        Value="True">
+
+                                                        <Setter
+                                                            Property="IsVisible"
+                                                            Value="False" />
+
+                                                    </DataTrigger>
+
+                                                </Label.Triggers>
+
+                                            </Label>
+
+                                        </Grid>
+
+                                    </Border>
+
+
+                                    <!-- ===================================== -->
+                                    <!-- DETAILS -->
+                                    <!-- ===================================== -->
+
+                                    <VerticalStackLayout
+                                        Grid.Column="1"
+                                        Spacing="5"
+                                        VerticalOptions="Center">
+
+                                        <Label
+                                            Text="{Binding ItemName}"
+                                            FontSize="17"
+                                            FontAttributes="Bold"
+                                            TextColor="White"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="2" />
+
+                                        <Label
+                                            Text="{Binding CategoryName}"
+                                            FontSize="12"
+                                            TextColor="#8F96A3" />
+
+                                        <Label
+                                            Text="{Binding Price, StringFormat='Rs. {0:N0}'}"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#03DAC6" />
+
+                                        <Label
+                                            Text="Currently unavailable"
+                                            FontSize="11"
+                                            FontAttributes="Bold"
+                                            TextColor="#CF6679"
+                                            IsVisible="{Binding IsUnavailable}" />
+
+                                    </VerticalStackLayout>
+
+
+                                    <!-- ===================================== -->
+                                    <!-- QUANTITY -->
+                                    <!-- ===================================== -->
+
+                                    <VerticalStackLayout
+                                        Grid.Column="2"
+                                        Spacing="5"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center">
+
+                                        <Label
+                                            Text="QTY"
+                                            FontSize="9"
+                                            FontAttributes="Bold"
+                                            TextColor="#70757F"
+                                            HorizontalTextAlignment="Center" />
+
+                                        <Grid
+                                            ColumnDefinitions="34,34,34"
+                                            HeightRequest="36">
+
+                                            <!-- MINUS -->
+
+                                            <Button
+                                                Grid.Column="0"
+                                                Text="−"
+                                                CommandParameter="{Binding}"
+                                                Clicked="OnDecreaseClicked"
+                                                BackgroundColor="#292D35"
+                                                TextColor="White"
+                                                FontSize="18"
+                                                FontAttributes="Bold"
+                                                Padding="0"
+                                                HeightRequest="34"
+                                                WidthRequest="34"
+                                                CornerRadius="9"
+                                                IsEnabled="{Binding IsAvailable}" />
+
+                                            <!-- QUANTITY -->
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding Quantity}"
+                                                FontSize="15"
+                                                FontAttributes="Bold"
+                                                TextColor="White"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Center" />
+
+                                            <!-- PLUS -->
+
+                                            <Button
+                                                Grid.Column="2"
+                                                Text="+"
+                                                CommandParameter="{Binding}"
+                                                Clicked="OnIncreaseClicked"
+                                                BackgroundColor="#03DAC6"
+                                                TextColor="#101114"
+                                                FontSize="18"
+                                                FontAttributes="Bold"
+                                                Padding="0"
+                                                HeightRequest="34"
+                                                WidthRequest="34"
+                                                CornerRadius="9"
+                                                IsEnabled="{Binding IsAvailable}" />
+
+                                        </Grid>
+
+                                    </VerticalStackLayout>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <!-- ================================================= -->
+                <!-- MENU NOTE -->
+                <!-- ================================================= -->
+
+                <Label
+                    Text="Prices and availability are provided by the arena."
+                    FontSize="11"
+                    TextColor="#70757F"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,5,0,0" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+
+        <!-- ===================================================== -->
+        <!-- BOTTOM CART BAR -->
+        <!-- ===================================================== -->
+
+        <Border
+            Grid.Row="1"
+            VerticalOptions="End"
+            Margin="16,0,16,16"
+            Padding="16"
+            BackgroundColor="#191B20"
+            Stroke="#03DAC6"
+            StrokeThickness="1"
+            ZIndex="20">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="18" />
+            </Border.StrokeShape>
+
+            <Grid
+                ColumnDefinitions="*,Auto"
+                ColumnSpacing="15">
+
+                <VerticalStackLayout
+                    Spacing="2">
+
+                    <Label
+                        Text="Food &amp; Drinks"
+                        FontSize="12"
+                        TextColor="#8F96A3" />
+
+                    <Label
+                        x:Name="LblFoodTotal"
+                        Text="Rs. 0"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="#03DAC6" />
+
+                </VerticalStackLayout>
+
+                <Button
+                    Grid.Column="1"
+                    x:Name="BtnContinue"
+                    Text="Continue"
+                    Clicked="OnContinueClicked"
+                    HeightRequest="46"
+                    WidthRequest="125"
+                    CornerRadius="12"
+                    BackgroundColor="#03DAC6"
+                    TextColor="#101114"
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    IsEnabled="False" />
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
+</ContentPage>

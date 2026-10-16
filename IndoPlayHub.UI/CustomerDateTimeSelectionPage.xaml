@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.CustomerDateTimeSelectionPage"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- TOP BAR -->
+        <!-- ===================================================== -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="20,18,20,12"
+            ColumnDefinitions="Auto,*,Auto"
+            ZIndex="10">
+
+            <!-- BACK BUTTON -->
+
+            <Border
+                Grid.Column="0"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="‹"
+                    FontSize="30"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- TITLE -->
+
+            <Label
+                Grid.Column="1"
+                x:Name="LblPageTitle"
+                Text="Select Date &amp; Time"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+
+            <!-- CALENDAR ICON -->
+
+            <Label
+                Grid.Column="2"
+                Text="📅"
+                FontSize="21"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+
+        <!-- ===================================================== -->
+        <!-- MAIN CONTENT -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout
+                Padding="20,5,20,40"
+                Spacing="20">
+
+
+                <!-- ================================================= -->
+                <!-- ARENA / COURT HEADER -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="18">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="6">
+
+                        <Label
+                            x:Name="LblArenaName"
+                            Text="Arena"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="LblArenaLocation"
+                            Text="📍 Location"
+                            FontSize="13"
+                            TextColor="#AEB4BF" />
+
+                        <Label
+                            x:Name="LblCourtName"
+                            Text="Court"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6" />
+
+                        <Label
+                            x:Name="LblCourtPrice"
+                            Text="Rs. 0 / hour"
+                            FontSize="13"
+                            TextColor="#9AA1AE" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- DATE SELECTION -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="8">
+
+                    <Label
+                        Text="Select Date"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Choose the day you want to play."
+                        FontSize="13"
+                        TextColor="#8F96A3" />
+
+                    <Border
+                        BackgroundColor="#191B20"
+                        Stroke="#292D35"
+                        StrokeThickness="1"
+                        Padding="14">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+
+                        <Grid
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="12">
+
+                            <Label
+                                Grid.Column="0"
+                                Text="📅"
+                                FontSize="22"
+                                VerticalOptions="Center" />
+
+                            <DatePicker
+                                Grid.Column="1"
+                                x:Name="BookingDatePicker"
+                                Format="dddd, dd MMMM yyyy"
+                                TextColor="White"
+                                BackgroundColor="Transparent"
+                                FontSize="15"
+                                HorizontalOptions="Fill"
+                                DateSelected="OnBookingDateSelected" />
+
+                        </Grid>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- SELECTED DATE -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#12302D"
+                    Stroke="#1E514C"
+                    StrokeThickness="1"
+                    Padding="15">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="4">
+
+                        <Label
+                            Text="Selected Date"
+                            FontSize="12"
+                            TextColor="#8FCFC9" />
+
+                        <Label
+                            x:Name="LblSelectedDate"
+                            Text="August 25, 2026"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- TIME SLOT HEADING -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Label
+                        Text="Available Time Slots"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        x:Name="LblSubheading"
+                        Text="Choose an available hourly slot."
+                        FontSize="13"
+                        TextColor="#8F96A3" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- LOADING -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    x:Name="LoadingLayout"
+                    IsVisible="False"
+                    Spacing="12"
+                    Padding="0,20">
+
+                    <ActivityIndicator
+                        x:Name="LoadingIndicator"
+                        IsRunning="False"
+                        Color="#03DAC6"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Checking availability..."
+                        FontSize="13"
+                        TextColor="#8F96A3"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- TIME SLOTS -->
+                <!-- ================================================= -->
+
+                <CollectionView
+                    x:Name="CvTimeSlots"
+                    SelectionMode="None">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="#191B20"
+                                Stroke="#292D35"
+                                StrokeThickness="1"
+                                Padding="16">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="18" />
+                                </Border.StrokeShape>
+
+                                <Grid
+                                    ColumnDefinitions="*,Auto"
+                                    RowDefinitions="Auto,Auto,Auto"
+                                    ColumnSpacing="12"
+                                    RowSpacing="7">
+
+                                    <!-- TIME -->
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding TimeText}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        TextColor="White" />
+
+
+                                    <!-- PRICE -->
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="{Binding PriceText}"
+                                        FontSize="13"
+                                        FontAttributes="Bold"
+                                        TextColor="#03DAC6" />
+
+
+                                    <!-- DETAIL -->
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="{Binding AvailabilityDetailText}"
+                                        FontSize="11"
+                                        TextColor="#8F96A3" />
+
+
+                                    <!-- STATUS -->
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1"
+                                        Text="{Binding AvailabilityText}"
+                                        TextColor="{Binding AvailabilityColor}"
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center" />
+
+
+                                    <!-- SELECT BUTTON -->
+
+                                    <Button
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding ButtonText}"
+                                        HeightRequest="40"
+                                        WidthRequest="120"
+                                        CornerRadius="12"
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        BackgroundColor="{Binding ButtonBackgroundColor}"
+                                        TextColor="{Binding ButtonTextColor}"
+                                        IsEnabled="{Binding IsAvailable}"
+                                        Clicked="OnTimeSlotSelectedClicked"
+                                        CommandParameter="{Binding .}" />
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <!-- ================================================= -->
+                <!-- EMPTY STATE -->
+                <!-- ================================================= -->
+
+                <Border
+                    x:Name="EmptyStateLayout"
+                    IsVisible="False"
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="25">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="10"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="🕐"
+                            FontSize="38"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            Text="No time slots available"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            x:Name="LblEmptyMessage"
+                            Text="No booking slots are available for this date."
+                            FontSize="13"
+                            TextColor="#8F96A3"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- INFORMATION -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#12302D"
+                    Stroke="#1E514C"
+                    StrokeThickness="1"
+                    Padding="15">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+                    <!-- GRID USED INSTEAD OF FillAndExpand -->
+
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        ColumnSpacing="10">
+
+                        <Label
+                            Grid.Column="0"
+                            Text="ℹ️"
+                            FontSize="18"
+                            VerticalOptions="Start" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="Green slots are available for booking. Red slots are already booked or unavailable."
+                            FontSize="12"
+                            TextColor="#B8E7E2"
+                            LineBreakMode="WordWrap"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

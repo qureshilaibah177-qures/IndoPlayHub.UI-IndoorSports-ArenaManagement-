@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.CustomerLocationPage"
+    Title="Find Arenas"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- HEADER -->
+        <!-- ===================================================== -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="24,20,24,15"
+            ColumnDefinitions="*,Auto">
+
+            <VerticalStackLayout
+                Grid.Column="0"
+                Spacing="4">
+
+                <Label
+                    Text="Find Arenas"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                <Label
+                    Text="Discover indoor sports near you"
+                    FontSize="13"
+                    TextColor="#8F96A3" />
+
+            </VerticalStackLayout>
+
+            <Border
+                Grid.Column="1"
+                HeightRequest="44"
+                WidthRequest="44"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                VerticalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="✕"
+                    FontSize="18"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Label.GestureRecognizers>
+
+                        <TapGestureRecognizer
+                            Tapped="OnCloseTapped" />
+
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+            </Border>
+
+        </Grid>
+
+
+        <!-- ===================================================== -->
+        <!-- MAIN CONTENT -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+            Grid.Row="1">
+
+            <VerticalStackLayout
+                Padding="24,5,24,35"
+                Spacing="22">
+
+                <!-- ================================================= -->
+                <!-- CURRENT LOCATION -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="18">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+                    <Grid
+                        ColumnDefinitions="Auto,*,Auto"
+                        ColumnSpacing="14">
+
+                        <Border
+                            Grid.Column="0"
+                            HeightRequest="48"
+                            WidthRequest="48"
+                            BackgroundColor="#173A35">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="24" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="📍"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="3"
+                            VerticalOptions="Center">
+
+                            <Label
+                                Text="Use Current Location"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                x:Name="LblCurrentLocation"
+                                Text="Find arenas around you"
+                                FontSize="12"
+                                TextColor="#8F96A3" />
+
+                        </VerticalStackLayout>
+
+                        <Button
+                            Grid.Column="2"
+                            Text="Use"
+                            Clicked="OnCurrentLocationClicked"
+                            BackgroundColor="#03DAC6"
+                            TextColor="#111114"
+                            FontAttributes="Bold"
+                            HeightRequest="40"
+                            WidthRequest="65"
+                            CornerRadius="10"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- SELECT CITY -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="12">
+
+                    <Label
+                        Text="Select City"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Choose a city to explore available arenas."
+                        FontSize="13"
+                        TextColor="#8F96A3" />
+
+                </VerticalStackLayout>
+
+
+                <FlexLayout
+                    Direction="Row"
+                    Wrap="Wrap"
+                    JustifyContent="Start"
+                    AlignItems="Start">
+
+                    <!-- MULTAN -->
+
+                    <Button
+                        Text="📍 Multan"
+                        Clicked="OnCityClicked"
+                        CommandParameter="Multan"
+                        BackgroundColor="#191B20"
+                        TextColor="White"
+                        BorderColor="#292D35"
+                        BorderWidth="1"
+                        FontSize="13"
+                        HeightRequest="45"
+                        CornerRadius="12"
+                        Margin="0,0,10,10" />
+
+                    <!-- LAHORE -->
+
+                    <Button
+                        Text="📍 Lahore"
+                        Clicked="OnCityClicked"
+                        CommandParameter="Lahore"
+                        BackgroundColor="#191B20"
+                        TextColor="White"
+                        BorderColor="#292D35"
+                        BorderWidth="1"
+                        FontSize="13"
+                        HeightRequest="45"
+                        CornerRadius="12"
+                        Margin="0,0,10,10" />
+
+                    <!-- ISLAMABAD -->
+
+                    <Button
+                        Text="📍 Islamabad"
+                        Clicked="OnCityClicked"
+                        CommandParameter="Islamabad"
+                        BackgroundColor="#191B20"
+                        TextColor="White"
+                        BorderColor="#292D35"
+                        BorderWidth="1"
+                        FontSize="13"
+                        HeightRequest="45"
+                        CornerRadius="12"
+                        Margin="0,0,10,10" />
+
+                    <!-- KARACHI -->
+
+                    <Button
+                        Text="📍 Karachi"
+                        Clicked="OnCityClicked"
+                        CommandParameter="Karachi"
+                        BackgroundColor="#191B20"
+                        TextColor="White"
+                        BorderColor="#292D35"
+                        BorderWidth="1"
+                        FontSize="13"
+                        HeightRequest="45"
+                        CornerRadius="12"
+                        Margin="0,0,10,10" />
+
+                    <!-- FAISALABAD -->
+
+                    <Button
+                        Text="📍 Faisalabad"
+                        Clicked="OnCityClicked"
+                        CommandParameter="Faisalabad"
+                        BackgroundColor="#191B20"
+                        TextColor="White"
+                        BorderColor="#292D35"
+                        BorderWidth="1"
+                        FontSize="13"
+                        HeightRequest="45"
+                        CornerRadius="12"
+                        Margin="0,0,10,10" />
+
+                </FlexLayout>
+
+
+                <!-- ================================================= -->
+                <!-- SELECTED LOCATION -->
+                <!-- ================================================= -->
+
+                <Border
+                    x:Name="LocationSummary"
+                    BackgroundColor="#173A35"
+                    Stroke="#03DAC6"
+                    StrokeThickness="1"
+                    Padding="15"
+                    IsVisible="False">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+
+                    <HorizontalStackLayout
+                        Spacing="10">
+
+                        <Label
+                            Text="📍"
+                            FontSize="18"
+                            VerticalOptions="Center" />
+
+                        <VerticalStackLayout
+                            Spacing="2">
+
+                            <Label
+                                Text="Selected Location"
+                                FontSize="11"
+                                TextColor="#8FCCC5" />
+
+                            <Label
+                                x:Name="LblSelectedLocation"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                        </VerticalStackLayout>
+
+                    </HorizontalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- ARENAS -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Label
+                        x:Name="LblArenaHeading"
+                        Text="Available Arenas"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        x:Name="LblArenaSubheading"
+                        Text="Select a city to discover arenas."
+                        FontSize="13"
+                        TextColor="#8F96A3" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- ARENA LIST -->
+                <!-- ================================================= -->
+
+                <CollectionView
+                    x:Name="CvArenas"
+                    SelectionMode="None">
+
+                    <CollectionView.ItemsLayout>
+
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="16" />
+
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="#191B20"
+                                Stroke="#292D35"
+                                StrokeThickness="1">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="16" />
+                                </Border.StrokeShape>
+
+                                <Grid
+                                    RowDefinitions="190,Auto"
+                                    Padding="0">
+
+                                    <!-- ARENA IMAGE -->
+
+                                    <Image
+                                        Grid.Row="0"
+                                        Source="{Binding ImageSource}"
+                                        Aspect="AspectFill" />
+
+                                    <!-- IMAGE OVERLAY -->
+
+                                    <BoxView
+                                        Grid.Row="0"
+                                        Color="Black"
+                                        Opacity="0.25" />
+
+                                    <!-- ARENA DETAILS -->
+
+                                    <VerticalStackLayout
+                                        Grid.Row="1"
+                                        Padding="18"
+                                        Spacing="8">
+
+                                        <Label
+                                            Text="{Binding ArenaName}"
+                                            FontSize="20"
+                                            FontAttributes="Bold"
+                                            TextColor="White" />
+
+                                        <Label
+                                            Text="{Binding Location}"
+                                            FontSize="13"
+                                            TextColor="#03DAC6" />
+
+                                        <Label
+                                            Text="{Binding OpeningHours}"
+                                            FontSize="12"
+                                            TextColor="#8F96A3" />
+
+                                        <Button
+                                            Text="View Arena"
+                                            Clicked="OnArenaClicked"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#BB86FC"
+                                            TextColor="#111114"
+                                            FontAttributes="Bold"
+                                            HeightRequest="45"
+                                            CornerRadius="10"
+                                            Margin="0,5,0,0" />
+
+                                    </VerticalStackLayout>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <!-- ================================================= -->
+                <!-- EMPTY STATE -->
+                <!-- ================================================= -->
+
+                <Border
+                    x:Name="EmptyState"
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="22"
+                    IsVisible="False">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="8"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="🏟️"
+                            FontSize="40"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            Text="No arenas found"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            x:Name="LblEmptyMessage"
+                            Text="Try selecting another city."
+                            FontSize="13"
+                            TextColor="#8F96A3"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

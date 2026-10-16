@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.CustomerCourtSelectionPage"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- TOP BAR -->
+        <!-- ===================================================== -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="20,18,20,12"
+            ColumnDefinitions="Auto,*,Auto"
+            ZIndex="10">
+
+            <!-- BACK -->
+
+            <Border
+                Grid.Column="0"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="‹"
+                    FontSize="30"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- TITLE -->
+
+            <Label
+                Grid.Column="1"
+                x:Name="LblPageTitle"
+                Text="Select a Court"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+
+            <!-- SPORT ICON -->
+
+            <Label
+                Grid.Column="2"
+                x:Name="LblSportIcon"
+                Text="🏟️"
+                FontSize="21"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+
+        <!-- ===================================================== -->
+        <!-- CONTENT -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout
+                Padding="20,5,20,40"
+                Spacing="20">
+
+
+                <!-- ================================================= -->
+                <!-- ARENA HEADER -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="18">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="6">
+
+                        <Label
+                            x:Name="LblArenaName"
+                            Text="Arena"
+                            FontSize="23"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="LblArenaLocation"
+                            Text="📍 Location"
+                            FontSize="13"
+                            TextColor="#AEB4BF" />
+
+                        <Label
+                            x:Name="LblSelectedSport"
+                            Text="🏟️ Sport"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- INTRO -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Label
+                        Text="Available Courts"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        x:Name="LblSubheading"
+                        Text="Choose a court for your booking"
+                        FontSize="13"
+                        TextColor="#8F96A3" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- LOADING -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    x:Name="LoadingLayout"
+                    IsVisible="False"
+                    Spacing="12"
+                    Padding="0,20">
+
+                    <ActivityIndicator
+                        x:Name="LoadingIndicator"
+                        IsRunning="False"
+                        Color="#03DAC6"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Loading courts..."
+                        FontSize="13"
+                        TextColor="#8F96A3"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- COURTS -->
+                <!-- ================================================= -->
+
+                <CollectionView
+                    x:Name="CvCourts"
+                    SelectionMode="None">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="#191B20"
+                                Stroke="#292D35"
+                                StrokeThickness="1"
+                                Padding="0">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="18" />
+                                </Border.StrokeShape>
+
+                                <Grid
+                                    RowDefinitions="150,Auto"
+                                    RowSpacing="0">
+
+
+                                    <!-- ================================= -->
+                                    <!-- COURT IMAGE -->
+                                    <!-- ================================= -->
+
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="#14161A"
+                                        StrokeThickness="0">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="18,18,0,0" />
+                                        </Border.StrokeShape>
+
+                                        <Grid>
+
+                                            <Image
+                                                Source="{Binding ImageUrl}"
+                                                Aspect="AspectFill" />
+
+                                            <BoxView
+                                                Color="Black"
+                                                Opacity="0.25" />
+
+
+                                            <!-- SPORT -->
+
+                                            <Border
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                Margin="12"
+                                                Padding="10,5"
+                                                BackgroundColor="#101114"
+                                                Stroke="#03DAC6"
+                                                StrokeThickness="1">
+
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle
+                                                        CornerRadius="12" />
+                                                </Border.StrokeShape>
+
+                                                <Label
+                                                    Text="{Binding CategoryName}"
+                                                    FontSize="11"
+                                                    FontAttributes="Bold"
+                                                    TextColor="#03DAC6" />
+
+                                            </Border>
+
+
+                                            <!-- AVAILABILITY -->
+
+                                            <Border
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Start"
+                                                Margin="12"
+                                                Padding="10,5"
+                                                BackgroundColor="#101114"
+                                                StrokeThickness="1">
+
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle
+                                                        CornerRadius="12" />
+                                                </Border.StrokeShape>
+
+                                                <Label
+                                                    Text="{Binding AvailabilityText}"
+                                                    FontSize="11"
+                                                    FontAttributes="Bold"
+                                                    TextColor="{Binding AvailabilityColor}" />
+
+                                            </Border>
+
+                                        </Grid>
+
+                                    </Border>
+
+
+                                    <!-- ================================= -->
+                                    <!-- COURT INFORMATION -->
+                                    <!-- ================================= -->
+
+                                    <VerticalStackLayout
+                                        Grid.Row="1"
+                                        Padding="16"
+                                        Spacing="10">
+
+                                        <Grid
+                                            ColumnDefinitions="*,Auto"
+                                            ColumnSpacing="12">
+
+                                            <VerticalStackLayout
+                                                Grid.Column="0"
+                                                Spacing="4">
+
+                                                <Label
+                                                    Text="{Binding ItemName}"
+                                                    FontSize="19"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White" />
+
+                                                <Label
+                                                    Text="{Binding PriceText}"
+                                                    FontSize="14"
+                                                    FontAttributes="Bold"
+                                                    TextColor="#03DAC6" />
+
+                                            </VerticalStackLayout>
+
+
+                                            <!-- PRICE -->
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding PriceShortText}"
+                                                FontSize="16"
+                                                FontAttributes="Bold"
+                                                TextColor="White"
+                                                VerticalOptions="Center" />
+
+                                        </Grid>
+
+
+                                        <!-- STATUS -->
+
+                                        <Label
+                                            Text="{Binding AvailabilityDetailText}"
+                                            FontSize="12"
+                                            TextColor="#9AA1AE" />
+
+
+                                        <!-- SELECT -->
+
+                                        <Button
+                                            Text="{Binding ButtonText}"
+                                            HeightRequest="48"
+                                            CornerRadius="14"
+                                            FontSize="14"
+                                            FontAttributes="Bold"
+                                            BackgroundColor="{Binding ButtonBackgroundColor}"
+                                            TextColor="{Binding ButtonTextColor}"
+                                            IsEnabled="{Binding IsAvailable}"
+                                            Clicked="OnCourtSelectedClicked"
+                                            CommandParameter="{Binding .}" />
+
+                                    </VerticalStackLayout>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <!-- ================================================= -->
+                <!-- EMPTY STATE -->
+                <!-- ================================================= -->
+
+                <Border
+                    x:Name="EmptyStateLayout"
+                    IsVisible="False"
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="25">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="10"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="🏟️"
+                            FontSize="38"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            Text="No courts available"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            x:Name="LblEmptyMessage"
+                            Text="This arena currently has no courts configured for this sport."
+                            FontSize="13"
+                            TextColor="#8F96A3"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- INFORMATION -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#12302D"
+                    Stroke="#1E514C"
+                    StrokeThickness="1"
+                    Padding="15">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+                    <HorizontalStackLayout
+                        Spacing="10">
+
+                        <Label
+                            Text="ℹ️"
+                            FontSize="18"
+                            VerticalOptions="Start" />
+
+                        <Label
+                            Text="Court availability is based on the arena's current setup. Booking dates and time slots will be selected in the next step."
+                            FontSize="12"
+                            TextColor="#B8E7E2"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="FillAndExpand" />
+
+                    </HorizontalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

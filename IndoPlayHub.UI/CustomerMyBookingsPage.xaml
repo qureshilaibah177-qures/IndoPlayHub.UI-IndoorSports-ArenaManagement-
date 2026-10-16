@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="IndoPlayHub.UI.CustomerMyBookingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="20,18,20,12"
+            ColumnDefinitions="Auto,*">
+
+            <Border
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="#191B20"
+                Stroke="#292D35">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="‹"
+                    FontSize="30"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+            <Label
+                Grid.Column="1"
+                Text="My Bookings"
+                FontSize="22"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+
+        <!-- CONTENT -->
+
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout
+                Padding="20,10,20,40"
+                Spacing="25">
+
+
+                <!-- UPCOMING -->
+
+                <VerticalStackLayout
+                    x:Name="UpcomingSection"
+                    Spacing="12">
+
+                    <Label
+                        Text="Upcoming"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <CollectionView
+                        ItemsSource="{Binding Bookings}"
+                        SelectionMode="None">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                Orientation="Vertical"
+                                ItemSpacing="12" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Border
+                                    IsVisible="{Binding IsUpcoming}"
+                                    BackgroundColor="#191B20"
+                                    Stroke="#292D35"
+                                    Padding="16">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="16" />
+                                    </Border.StrokeShape>
+
+                                    <VerticalStackLayout
+                                        Spacing="12">
+
+                                        <Grid
+                                            ColumnDefinitions="Auto,*,Auto">
+
+                                            <Label
+                                                Text="🟢"
+                                                FontSize="16" />
+
+                                            <VerticalStackLayout
+                                                Grid.Column="1"
+                                                Spacing="2">
+
+                                                <Label
+                                                    Text="{Binding SportName}"
+                                                    FontSize="17"
+                                                    FontAttributes="Bold"
+                                                    TextColor="White" />
+
+                                                <Label
+                                                    Text="{Binding CourtName}"
+                                                    FontSize="12"
+                                                    TextColor="#8F96A3" />
+
+                                            </VerticalStackLayout>
+
+                                            <Label
+                                                Grid.Column="2"
+                                                Text="{Binding TotalAmountText}"
+                                                FontSize="14"
+                                                FontAttributes="Bold"
+                                                TextColor="#03DAC6" />
+
+                                        </Grid>
+
+                                        <Label
+                                            Text="{Binding BookingDateText}"
+                                            FontSize="14"
+                                            TextColor="#D0D3D8" />
+
+                                        <Label
+                                            Text="{Binding BookingTimeText}"
+                                            FontSize="14"
+                                            TextColor="#D0D3D8" />
+
+                                        <Button
+                                            Text="View Details"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnViewDetailsClicked"
+                                            HeightRequest="44"
+                                            CornerRadius="12"
+                                            BackgroundColor="#202329"
+                                            TextColor="#03DAC6"
+                                            FontAttributes="Bold" />
+
+                                    </VerticalStackLayout>
+
+                                </Border>
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+
+                <!-- COMPLETED -->
+
+                <VerticalStackLayout
+                    x:Name="CompletedSection"
+                    Spacing="12">
+
+                    <Label
+                        Text="Completed"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <CollectionView
+                        ItemsSource="{Binding Bookings}"
+                        SelectionMode="None">
+
+                        <CollectionView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Border
+                                    IsVisible="{Binding IsCompleted}"
+                                    BackgroundColor="#191B20"
+                                    Stroke="#292D35"
+                                    Padding="16">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="16" />
+                                    </Border.StrokeShape>
+
+                                    <VerticalStackLayout
+                                        Spacing="10">
+
+                                        <Label
+                                            Text="{Binding SportName}"
+                                            FontSize="17"
+                                            FontAttributes="Bold"
+                                            TextColor="White" />
+
+                                        <Label
+                                            Text="{Binding BookingDateText}"
+                                            FontSize="14"
+                                            TextColor="#D0D3D8" />
+
+                                        <Label
+                                            Text="{Binding BookingTimeText}"
+                                            FontSize="14"
+                                            TextColor="#D0D3D8" />
+
+                                        <Button
+                                            Text="View Details"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnViewDetailsClicked"
+                                            HeightRequest="44"
+                                            CornerRadius="12"
+                                            BackgroundColor="#202329"
+                                            TextColor="#03DAC6"
+                                            FontAttributes="Bold" />
+
+                                    </VerticalStackLayout>
+
+                                </Border>
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+
+                <!-- CANCELLED -->
+
+                <VerticalStackLayout
+                    x:Name="CancelledSection"
+                    Spacing="12">
+
+                    <Label
+                        Text="Cancelled"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <CollectionView
+                        ItemsSource="{Binding Bookings}"
+                        SelectionMode="None">
+
+                        <CollectionView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Border
+                                    IsVisible="{Binding IsCancelled}"
+                                    BackgroundColor="#191B20"
+                                    Stroke="#292D35"
+                                    Padding="16">
+
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="16" />
+                                    </Border.StrokeShape>
+
+                                    <VerticalStackLayout
+                                        Spacing="10">
+
+                                        <Label
+                                            Text="{Binding SportName}"
+                                            FontSize="17"
+                                            FontAttributes="Bold"
+                                            TextColor="White" />
+
+                                        <Label
+                                            Text="{Binding BookingDateText}"
+                                            FontSize="14"
+                                            TextColor="#D0D3D8" />
+
+                                        <Label
+                                            Text="{Binding BookingTimeText}"
+                                            FontSize="14"
+                                            TextColor="#D0D3D8" />
+
+                                        <Label
+                                            Text="Cancelled"
+                                            FontSize="13"
+                                            FontAttributes="Bold"
+                                            TextColor="#FF5252" />
+
+                                        <Button
+                                            Text="View Details"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnViewDetailsClicked"
+                                            HeightRequest="44"
+                                            CornerRadius="12"
+                                            BackgroundColor="#202329"
+                                            TextColor="#03DAC6"
+                                            FontAttributes="Bold" />
+
+                                    </VerticalStackLayout>
+
+                                </Border>
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+
+                <!-- EMPTY -->
+
+                <VerticalStackLayout
+                    x:Name="EmptyState"
+                    IsVisible="False"
+                    Spacing="8"
+                    HorizontalOptions="Center"
+                    Padding="20,60">
+
+                    <Label
+                        Text="📅"
+                        FontSize="45"
+                        HorizontalTextAlignment="Center" />
+
+                    <Label
+                        Text="No bookings yet"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center" />
+
+                    <Label
+                        Text="Your upcoming and completed bookings will appear here."
+                        FontSize="13"
+                        TextColor="#8F96A3"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="IndoPlayHub.UI.CustomerBookingDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="20,18,20,12"
+            ColumnDefinitions="Auto,*">
+
+            <Border
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="#191B20"
+                Stroke="#292D35">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="‹"
+                    FontSize="30"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnBackTapped" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+            <Label
+                Grid.Column="1"
+                Text="Booking Details"
+                FontSize="21"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout
+                Padding="20,10,20,40"
+                Spacing="18">
+
+
+                <!-- BOOKING ID -->
+
+                <Border
+                    BackgroundColor="#12302D"
+                    Stroke="#1E514C"
+                    Padding="18">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="4">
+
+                        <Label
+                            Text="BOOKING ID"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#8F96A3"
+                            HorizontalTextAlignment="Center" />
+
+                        <Label
+                            x:Name="LblBookingID"
+                            Text="#0000"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- DETAILS -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="17">
+
+                        <Label
+                            Text="Booking Details"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="LblArena"
+                            Text="Arena"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="LblLocation"
+                            Text="Location"
+                            FontSize="14"
+                            TextColor="#B7BBC3" />
+
+                        <Label
+                            x:Name="LblSport"
+                            Text="Sport"
+                            FontSize="15"
+                            TextColor="#D0D3D8" />
+
+                        <Label
+                            x:Name="LblCourt"
+                            Text="Court"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="LblDate"
+                            Text="Date"
+                            FontSize="15"
+                            TextColor="#D0D3D8" />
+
+                        <Label
+                            x:Name="LblTime"
+                            Text="Time"
+                            FontSize="15"
+                            TextColor="#D0D3D8" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- PAYMENT -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="14">
+
+                        <Label
+                            Text="Payment"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <Label
+                                Text="Method"
+                                TextColor="#B7BBC3" />
+
+                            <Label
+                                x:Name="LblPaymentMethod"
+                                Grid.Column="1"
+                                Text="Pay at Venue"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <Label
+                                Text="Payment Status"
+                                TextColor="#B7BBC3" />
+
+                            <Label
+                                x:Name="LblPaymentStatus"
+                                Grid.Column="1"
+                                Text="Pending"
+                                TextColor="#FFB74D"
+                                FontAttributes="Bold" />
+
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <Label
+                                Text="Total"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                x:Name="LblTotal"
+                                Grid.Column="1"
+                                Text="Rs. 0"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="#03DAC6" />
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- STATUS -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="14">
+
+                        <Label
+                            Text="Booking Status"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="LblBookingStatus"
+                            Text="Confirmed"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6" />
+
+                        <Label
+                            Text="Refund Status"
+                            FontSize="13"
+                            TextColor="#8F96A3" />
+
+                        <Label
+                            x:Name="LblRefundStatus"
+                            Text="Not Required"
+                            FontSize="15"
+                            TextColor="#D0D3D8" />
+
+                        <Label
+                            Text="Cancellation Reason"
+                            FontSize="13"
+                            TextColor="#8F96A3" />
+
+                        <Label
+                            x:Name="LblCancellationReason"
+                            Text="—"
+                            FontSize="15"
+                            TextColor="#D0D3D8" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- CANCELLATION POLICY -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    Padding="18">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label
+                            Text="Cancellation Policy"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="PolicyLabel"
+                            Text="Free cancellation up to 2 hours before your booking."
+                            FontSize="13"
+                            TextColor="#A8ADB7" />
+
+                        <Button
+                            x:Name="CancelBookingButton"
+                            Text="Cancel Booking"
+                            Clicked="OnCancelBookingClicked"
+                            HeightRequest="52"
+                            CornerRadius="14"
+                            BackgroundColor="#FF5252"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

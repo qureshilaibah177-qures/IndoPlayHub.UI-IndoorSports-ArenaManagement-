@@ -1,0 +1,332 @@
+ 
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.CustomerProfilePage"
+    Title="My Profile"
+    BackgroundColor="#101114">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25,30,25,40"
+            Spacing="20"
+            MaximumWidthRequest="700"
+            HorizontalOptions="Center">
+
+            <!-- ================================================= -->
+            <!-- HEADER -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout
+                Spacing="4"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="My Profile"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    Text="Manage your IndoPlayHub customer account"
+                    FontSize="13"
+                    TextColor="#8F96A3"
+                    HorizontalTextAlignment="Center" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- PROFILE CARD -->
+            <!-- ================================================= -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="25">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout
+                    Spacing="16"
+                    HorizontalOptions="Fill">
+
+                    <!-- PROFILE IMAGE -->
+
+                    <Border
+                        HeightRequest="115"
+                        WidthRequest="115"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#23262D">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="58" />
+                        </Border.StrokeShape>
+
+                        <Image
+                            x:Name="ImgProfile"
+                            Source="profile_placeholder.png"
+                            Aspect="AspectFill"
+                            HeightRequest="115"
+                            WidthRequest="115" />
+
+                    </Border>
+
+
+                    <!-- NAME -->
+
+                    <Label
+                        x:Name="LblFullName"
+                        Text="Customer Name"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center" />
+
+
+                    <!-- ACCOUNT STATUS -->
+
+                    <Border
+                        BackgroundColor="#173A35"
+                        StrokeThickness="0"
+                        Padding="12,6"
+                        HorizontalOptions="Center">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            x:Name="LblAccountStatus"
+                            Text="Active Account"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#03DAC6" />
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- ACCOUNT INFORMATION -->
+            <!-- ================================================= -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label
+                        Text="Account Information"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#BB86FC" />
+
+
+                    <!-- EMAIL -->
+
+                    <VerticalStackLayout Spacing="4">
+
+                        <Label
+                            Text="Email Address"
+                            FontSize="12"
+                            TextColor="#7F8794" />
+
+                        <Label
+                            x:Name="LblEmail"
+                            Text="customer@email.com"
+                            FontSize="15"
+                            TextColor="White" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- PHONE -->
+
+                    <VerticalStackLayout Spacing="4">
+
+                        <Label
+                            Text="Phone Number"
+                            FontSize="12"
+                            TextColor="#7F8794" />
+
+                        <Label
+                            x:Name="LblPhone"
+                            Text="03XXXXXXXXX"
+                            FontSize="15"
+                            TextColor="White" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- MEMBER SINCE -->
+
+                    <VerticalStackLayout Spacing="4">
+
+                        <Label
+                            Text="Member Since"
+                            FontSize="12"
+                            TextColor="#7F8794" />
+
+                        <Label
+                            x:Name="LblCreatedAt"
+                            Text="January 2026"
+                            FontSize="15"
+                            TextColor="White" />
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- ACCOUNT SETTINGS -->
+            <!-- ================================================= -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="20">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Account Settings"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#BB86FC"
+                        Margin="0,0,0,5" />
+
+
+                    <!-- EDIT PROFILE -->
+
+                    <Button
+                        Text="✎  Edit Profile"
+                        Clicked="OnEditProfileClicked"
+                        BackgroundColor="#23262D"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="10" />
+
+
+                    <!-- CHANGE PASSWORD -->
+
+                    <Button
+                        Text="🔒  Change Password"
+                        Clicked="OnChangePasswordClicked"
+                        BackgroundColor="#23262D"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="10" />
+
+
+                    <!-- HELP & SUPPORT -->
+
+                    <Button
+                        Text="❓  Help &amp; Support"
+                        Clicked="OnHelpSupportClicked"
+                        BackgroundColor="#23262D"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="10" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- LEGAL -->
+            <!-- ================================================= -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="20">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Legal"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#BB86FC"
+                        Margin="0,0,0,5" />
+
+
+                    <!-- TERMS -->
+
+                    <Button
+                        Text="Terms &amp; Conditions"
+                        Clicked="OnTermsClicked"
+                        BackgroundColor="#23262D"
+                        TextColor="White"
+                        HeightRequest="48"
+                        CornerRadius="10" />
+
+
+                    <!-- PRIVACY -->
+
+                    <Button
+                        Text="Privacy Policy"
+                        Clicked="OnPrivacyClicked"
+                        BackgroundColor="#23262D"
+                        TextColor="White"
+                        HeightRequest="48"
+                        CornerRadius="10" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- LOGOUT -->
+            <!-- ================================================= -->
+
+            <Button
+                Text="Logout"
+                Clicked="OnLogoutClicked"
+                BackgroundColor="#CF6679"
+                TextColor="White"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                CornerRadius="10"
+                Margin="0,5,0,0" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
+

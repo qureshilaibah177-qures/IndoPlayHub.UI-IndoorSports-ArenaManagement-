@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+ x:Class="IndoPlayHub.UI.CustomerTermsPage"
+ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ Title="Terms &amp; Conditions"
+ BackgroundColor="#101114"
+ NavigationPage.HasNavigationBar="False">
+
+  
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+
+        <Grid
+        Grid.Row="0"
+        Padding="20,18"
+        ColumnDefinitions="Auto,*"
+        BackgroundColor="#17191E">
+
+            <Button
+            Text="‹"
+            FontSize="34"
+            TextColor="White"
+            BackgroundColor="Transparent"
+            WidthRequest="48"
+            HeightRequest="48"
+            Padding="0"
+            Clicked="OnBackClicked" />
+
+            <VerticalStackLayout
+            Grid.Column="1"
+            VerticalOptions="Center"
+            Spacing="2">
+
+                <Label
+                Text="Terms &amp; Conditions"
+                FontSize="21"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+                <Label
+                Text="IndoPlayHub Customer Terms"
+                FontSize="13"
+                TextColor="#9EA3AD" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+
+        <!-- CONTENT -->
+
+        <ScrollView
+        Grid.Row="1">
+
+            <VerticalStackLayout
+            Padding="22,25,22,40"
+            Spacing="20">
+
+                <Label
+                Text="Terms &amp; Conditions"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+                <Label
+                Text="Last updated: August 2026"
+                FontSize="12"
+                TextColor="#8F96A3" />
+
+                <Label
+                Text="These Terms &amp; Conditions describe the basic rules for using the IndoPlayHub customer application."
+                FontSize="14"
+                TextColor="#B8BDC7"
+                LineBreakMode="WordWrap" />
+
+
+                <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 16"
+                Padding="20">
+
+                    <VerticalStackLayout Spacing="18">
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="1. Account Registration"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Customers are responsible for providing accurate account information and keeping their login credentials confidential."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="2. Arena Bookings"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Customers should review the selected arena, sport, court, date, time and booking amount before confirming a booking."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="3. Cancellations"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Cancellation availability and any applicable conditions depend on the booking information and policies associated with the arena."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="4. Arena Information"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Arena names, locations, sports, facilities, availability and pricing are provided through the application and may change."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="5. Responsible Use"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Customers must use the application responsibly and must not intentionally misuse, disrupt or attempt to compromise the service."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="6. Support"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Customers can use the Help &amp; Support section to find answers and request assistance with their account or bookings."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="7. Changes to These Terms"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="These terms may be updated when the application's features, booking process or policies change."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <Label
+                Text="By using IndoPlayHub, customers acknowledge these general terms for using the customer application."
+                FontSize="13"
+                TextColor="#8F96A3"
+                LineBreakMode="WordWrap" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

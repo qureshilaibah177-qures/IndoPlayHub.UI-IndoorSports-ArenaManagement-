@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.MenuPage"
+    Title="Menu &amp; Inventory"
+    BackgroundColor="#101114">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- HEADER / ADD ITEM SECTION -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+            Grid.Row="0"
+            MaximumHeightRequest="520">
+
+            <VerticalStackLayout
+                Padding="24"
+                Spacing="22"
+                MaximumWidthRequest="900"
+                HorizontalOptions="Center">
+
+                <!-- HEADER -->
+
+                <VerticalStackLayout Spacing="5">
+
+                    <Label
+                        Text="Menu &amp; Inventory"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Manage cafeteria products, refreshments and other arena items."
+                        FontSize="13"
+                        TextColor="#9CA3AF" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- ADD ITEM CARD -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <Label
+                            Text="Add New Item"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+
+                        <!-- ITEM NAME -->
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Item Name"
+                                FontSize="12"
+                                TextColor="#B8BDC7" />
+
+                            <Entry
+                                x:Name="TxtItemName"
+                                Placeholder="e.g. Energy Drink"
+                                PlaceholderColor="#70757F"
+                                TextColor="White"
+                                BackgroundColor="#23262D"
+                                ClearButtonVisibility="WhileEditing" />
+
+                        </VerticalStackLayout>
+
+
+                        <!-- PRICE -->
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Price (Rs.)"
+                                FontSize="12"
+                                TextColor="#B8BDC7" />
+
+                            <Entry
+                                x:Name="TxtPrice"
+                                Placeholder="e.g. 250"
+                                PlaceholderColor="#70757F"
+                                Keyboard="Numeric"
+                                TextColor="White"
+                                BackgroundColor="#23262D"
+                                ClearButtonVisibility="WhileEditing" />
+
+                        </VerticalStackLayout>
+
+
+                        <!-- IMAGE URL -->
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Image URL (Optional)"
+                                FontSize="12"
+                                TextColor="#B8BDC7" />
+
+                            <Entry
+                                x:Name="TxtItemImage"
+                                Placeholder="https://example.com/image.jpg"
+                                PlaceholderColor="#70757F"
+                                TextColor="White"
+                                BackgroundColor="#23262D"
+                                ClearButtonVisibility="WhileEditing" />
+
+                        </VerticalStackLayout>
+
+
+                        <!-- SAVE BUTTON -->
+
+                        <Button
+                            Text="Save Item"
+                            Clicked="OnSaveMenuItemClicked"
+                            BackgroundColor="#BB86FC"
+                            TextColor="#111114"
+                            FontAttributes="Bold"
+                            HeightRequest="48"
+                            CornerRadius="10"
+                            Margin="0,5,0,0" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    Margin="0,5,0,0">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Registered Items"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        x:Name="LblItemCount"
+                        Grid.Column="1"
+                        Text="0 items"
+                        FontSize="13"
+                        TextColor="#03DAC6"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+
+                <!-- ================================================= -->
+                <!-- EMPTY STATE -->
+                <!-- ================================================= -->
+
+                <Border
+                    x:Name="EmptyState"
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="30"
+                    IsVisible="False">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Spacing="8"
+                        HorizontalOptions="Center">
+
+                        <Label
+                            Text="No inventory items yet"
+                            FontSize="17"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalOptions="Center" />
+
+                        <Label
+                            Text="Add your first cafeteria or store item above."
+                            FontSize="13"
+                            TextColor="#8F96A3"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+
+        <!-- ===================================================== -->
+        <!-- ITEMS LIST -->
+        <!-- ===================================================== -->
+
+        <CollectionView
+            x:Name="CvMenuItems"
+            Grid.Row="1"
+            Margin="24,0,24,24"
+            SelectionMode="None">
+
+            <CollectionView.EmptyView>
+
+                <ContentView />
+
+            </CollectionView.EmptyView>
+
+
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <Border
+                        BackgroundColor="#191B20"
+                        Stroke="#292D35"
+                        StrokeThickness="1"
+                        Padding="12"
+                        Margin="0,5">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+
+                        <Grid
+                            ColumnDefinitions="70,*,Auto"
+                            ColumnSpacing="14"
+                            VerticalOptions="Center">
+
+
+                            <!-- ================================================= -->
+                            <!-- IMAGE -->
+                            <!-- ================================================= -->
+
+                            <Border
+                                Grid.Column="0"
+                                HeightRequest="60"
+                                WidthRequest="70"
+                                BackgroundColor="#23262D">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+
+                                <Image
+                                    Source="{Binding ImageUrl}"
+                                    Aspect="AspectFill"
+                                    HeightRequest="60"
+                                    WidthRequest="70" />
+
+                            </Border>
+
+
+                            <!-- ================================================= -->
+                            <!-- DETAILS -->
+                            <!-- ================================================= -->
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="3"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Text="{Binding ItemName}"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+
+                                <Label
+                                    Text="{Binding Price, StringFormat='Rs. {0:N0}'}"
+                                    FontSize="13"
+                                    TextColor="#03DAC6" />
+
+                            </VerticalStackLayout>
+
+
+                            <!-- ================================================= -->
+                            <!-- DELETE -->
+                            <!-- ================================================= -->
+
+                            <Button
+                                Grid.Column="2"
+                                Text="Delete"
+                                CommandParameter="{Binding MenuItemID}"
+                                Clicked="OnDeleteMenuItemClicked"
+                                BackgroundColor="#CF6679"
+                                TextColor="White"
+                                FontSize="11"
+                                FontAttributes="Bold"
+                                HeightRequest="38"
+                                WidthRequest="75"
+                                CornerRadius="8"
+                                VerticalOptions="Center" />
+
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+ x:Class="IndoPlayHub.UI.CustomerSupportPage"
+ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ Title="Help &amp; Support"
+ BackgroundColor="#101114"
+ NavigationPage.HasNavigationBar="False">
+
+   
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- HEADER -->
+        <!-- ===================================================== -->
+
+        <Grid
+        Grid.Row="0"
+        Padding="20,18"
+        ColumnDefinitions="Auto,*"
+        BackgroundColor="#17191E">
+
+            <Button
+            Grid.Column="0"
+            Text="‹"
+            FontSize="34"
+            TextColor="White"
+            BackgroundColor="Transparent"
+            WidthRequest="48"
+            HeightRequest="48"
+            Padding="0"
+            Clicked="OnBackClicked" />
+
+            <VerticalStackLayout
+            Grid.Column="1"
+            VerticalOptions="Center"
+            Spacing="2">
+
+                <Label
+                Text="Help &amp; Support"
+                FontSize="22"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+                <Label
+                Text="We're here to help"
+                FontSize="13"
+                TextColor="#9EA3AD" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+
+        <!-- ===================================================== -->
+        <!-- CONTENT -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+        Grid.Row="1">
+
+            <VerticalStackLayout
+            Padding="20,22,20,35"
+            Spacing="22">
+
+                <!-- ================================================= -->
+                <!-- HELP CENTER -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                Spacing="5">
+
+                    <Label
+                    Text="Help Center"
+                    FontSize="25"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                    <Label
+                    Text="Find quick answers to common questions."
+                    FontSize="14"
+                    TextColor="#9EA3AD" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- SEARCH -->
+                <!-- ================================================= -->
+
+                <Border
+                BackgroundColor="#191C21"
+                Stroke="#292D34"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 14"
+                Padding="15,0">
+
+                    <Grid
+                    ColumnDefinitions="Auto,*">
+
+                        <Label
+                        Grid.Column="0"
+                        Text="⌕"
+                        FontSize="25"
+                        TextColor="#AEB4BF"
+                        VerticalOptions="Center"
+                        Margin="0,0,10,0" />
+
+                        <Entry
+                        x:Name="SearchEntry"
+                        Grid.Column="1"
+                        Placeholder="Search for help..."
+                        PlaceholderColor="#747A85"
+                        TextColor="White"
+                        FontSize="15"
+                        BackgroundColor="Transparent"
+                        ClearButtonVisibility="WhileEditing"
+                        TextChanged="OnSearchTextChanged" />
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- FAQ -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                Spacing="10">
+
+                    <Label
+                    Text="Frequently Asked Questions"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                    <VerticalStackLayout
+                    x:Name="FaqContainer"
+                    Spacing="10" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- SUPPORT -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                Spacing="10"
+                Margin="0,8,0,0">
+
+                    <Label
+                    Text="Still Need Help?"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                    <Label
+                    Text="Choose a support option below."
+                    FontSize="14"
+                    TextColor="#9EA3AD" />
+
+
+                    <!-- CHAT -->
+
+                    <Border
+                    BackgroundColor="#191C21"
+                    Stroke="#292D34"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16">
+
+                        <Grid
+                        ColumnDefinitions="Auto,*,Auto"
+                        ColumnSpacing="14">
+
+                            <Border
+                            Grid.Column="0"
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            BackgroundColor="#252A32"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14">
+
+                                <Label
+                                Text="💬"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+
+                            </Border>
+
+                            <VerticalStackLayout
+                            Grid.Column="1"
+                            VerticalOptions="Center"
+                            Spacing="3">
+
+                                <Label
+                                Text="Chat Support"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                                <Label
+                                Text="Get assistance with your booking or account."
+                                FontSize="12"
+                                TextColor="#9EA3AD" />
+
+                            </VerticalStackLayout>
+
+                            <Button
+                            Grid.Column="2"
+                            Text="›"
+                            FontSize="26"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            WidthRequest="40"
+                            Clicked="OnChatSupportClicked" />
+
+                        </Grid>
+
+                    </Border>
+
+
+                    <!-- EMAIL -->
+
+                    <Border
+                    BackgroundColor="#191C21"
+                    Stroke="#292D34"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16">
+
+                        <Grid
+                        ColumnDefinitions="Auto,*,Auto"
+                        ColumnSpacing="14">
+
+                            <Border
+                            Grid.Column="0"
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            BackgroundColor="#252A32"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14">
+
+                                <Label
+                                Text="✉"
+                                FontSize="22"
+                                TextColor="White"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+
+                            </Border>
+
+                            <VerticalStackLayout
+                            Grid.Column="1"
+                            VerticalOptions="Center"
+                            Spacing="3">
+
+                                <Label
+                                Text="Email Support"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                                <Label
+                                Text="Send us your question or issue."
+                                FontSize="12"
+                                TextColor="#9EA3AD" />
+
+                            </VerticalStackLayout>
+
+                            <Button
+                            Grid.Column="2"
+                            Text="›"
+                            FontSize="26"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            WidthRequest="40"
+                            Clicked="OnEmailSupportClicked" />
+
+                        </Grid>
+
+                    </Border>
+
+
+                    <!-- NOTE -->
+
+                    <Border
+                    BackgroundColor="#16181D"
+                    Stroke="#292D34"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="15"
+                    Margin="0,5,0,0">
+
+                        <Label
+                        Text="For booking issues, include your booking details when contacting support so the issue can be handled more efficiently."
+                        FontSize="12"
+                        TextColor="#8F96A2"
+                        LineBreakMode="WordWrap" />
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+ 
+
+</ContentPage>

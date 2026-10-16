@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.AddSportPage"
+    Title="Add Sport"
+    BackgroundColor="#0B0F14">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="18"
+            MaximumWidthRequest="900"
+            HorizontalOptions="Center">
+
+            <!-- HEADER -->
+
+            <Grid
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="14"
+                Margin="0,8,0,4">
+
+                <Button
+                    Grid.Column="0"
+                    Text="‹"
+                    FontSize="28"
+                    BackgroundColor="#151B23"
+                    TextColor="White"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    CornerRadius="14"
+                    Clicked="OnBackClicked" />
+
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    Spacing="2"
+                    VerticalOptions="Center">
+
+                    <Label
+                        Text="SPORT MANAGEMENT"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#BB86FC"
+                        CharacterSpacing="1.5" />
+
+                    <Label
+                        Text="Add New Sport"
+                        FontSize="25"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Add a new sport and configure its playing units."
+                        FontSize="12"
+                        TextColor="#7F8A99" />
+
+                </VerticalStackLayout>
+
+            </Grid>
+
+
+            <!-- SPORT SELECTION -->
+
+            <Border
+                BackgroundColor="#151B23"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 18"
+                Padding="18">
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label
+                        Text="SPORT INFORMATION"
+                        FontSize="11"
+                        FontAttributes="Bold"
+                        TextColor="#9AA4B2"
+                        CharacterSpacing="1" />
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="SELECT SPORT"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#7F8A99" />
+
+                        <Picker
+                            x:Name="PkSport"
+                            Title="Choose a sport"
+                            TitleColor="#657080"
+                            TextColor="White"
+                            BackgroundColor="#1B222C"
+                            FontSize="14"
+                            ItemDisplayBinding="{Binding CategoryName}"
+                            SelectedIndexChanged="OnSportSelected" />
+
+                    </VerticalStackLayout>
+
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="PLAYING UNITS"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#7F8A99" />
+
+                        <Entry
+                            x:Name="TxtUnitCount"
+                            Placeholder="e.g. 2"
+                            PlaceholderColor="#657080"
+                            TextColor="White"
+                            BackgroundColor="#1B222C"
+                            Keyboard="Numeric"
+                            FontSize="15" />
+
+                        <Label
+                            Text="Number of courts / playing areas to create."
+                            FontSize="10"
+                            TextColor="#657080" />
+
+                    </VerticalStackLayout>
+
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="HOURLY RATE"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#7F8A99" />
+
+                        <Grid
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="8">
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Rs."
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="#03DAC6"
+                                VerticalOptions="Center" />
+
+                            <Entry
+                                x:Name="TxtPrice"
+                                Grid.Column="1"
+                                Placeholder="Enter hourly price"
+                                PlaceholderColor="#657080"
+                                TextColor="White"
+                                BackgroundColor="#1B222C"
+                                Keyboard="Numeric"
+                                FontSize="15" />
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- PREVIEW -->
+
+            <Border
+                BackgroundColor="#121820"
+                Stroke="#29313D"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15"
+                Padding="16">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        Text="WHAT WILL BE CREATED"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#7F8A99"
+                        CharacterSpacing="1" />
+
+                    <Label
+                        x:Name="LblPreview"
+                        Text="Select a sport and enter the number of playing units."
+                        FontSize="13"
+                        TextColor="#D0D5DD"
+                        LineBreakMode="WordWrap" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- SAVE -->
+
+            <Button
+                x:Name="BtnAddSport"
+                Text="ADD SPORT"
+                BackgroundColor="#BB86FC"
+                TextColor="#0B0F14"
+                FontSize="13"
+                FontAttributes="Bold"
+                CornerRadius="11"
+                HeightRequest="52"
+                Clicked="OnAddSportClicked" />
+
+            <Label
+                Text="The new sport will be added directly to your arena database."
+                FontSize="10"
+                TextColor="#4F5967"
+                HorizontalOptions="Center"
+                Margin="0,-8,0,15" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

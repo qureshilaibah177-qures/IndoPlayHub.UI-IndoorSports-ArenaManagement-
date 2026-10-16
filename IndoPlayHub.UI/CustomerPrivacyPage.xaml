@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+ x:Class="IndoPlayHub.UI.CustomerPrivacyPage"
+ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ Title="Privacy Policy"
+ BackgroundColor="#101114"
+ NavigationPage.HasNavigationBar="False">
+<Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+
+        <Grid
+        Grid.Row="0"
+        Padding="20,18"
+        ColumnDefinitions="Auto,*"
+        BackgroundColor="#17191E">
+
+            <Button
+            Text="‹"
+            FontSize="34"
+            TextColor="White"
+            BackgroundColor="Transparent"
+            WidthRequest="48"
+            HeightRequest="48"
+            Padding="0"
+            Clicked="OnBackClicked" />
+
+            <VerticalStackLayout
+            Grid.Column="1"
+            VerticalOptions="Center"
+            Spacing="2">
+
+                <Label
+                Text="Privacy Policy"
+                FontSize="22"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+                <Label
+                Text="Your privacy matters"
+                FontSize="13"
+                TextColor="#9EA3AD" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+
+        <!-- CONTENT -->
+
+        <ScrollView
+        Grid.Row="1">
+
+            <VerticalStackLayout
+            Padding="22,25,22,40"
+            Spacing="20">
+
+                <Label
+                Text="Privacy Policy"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+                <Label
+                Text="Last updated: August 2026"
+                FontSize="12"
+                TextColor="#8F96A3" />
+
+                <Label
+                Text="This Privacy Policy explains how information provided through the IndoPlayHub customer application is handled within this training project."
+                FontSize="14"
+                TextColor="#B8BDC7"
+                LineBreakMode="WordWrap" />
+
+
+                <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 16"
+                Padding="20">
+
+                    <VerticalStackLayout Spacing="18">
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="1. Information We Collect"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="The customer account may contain information such as your name, email address, phone number, profile image and account creation date."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="2. Booking Information"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Information related to your arena bookings may be stored so the application can display and manage your booking history and status."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="3. Use of Information"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Customer information is used to provide account functionality, display bookings, personalize the customer experience and support application features."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="4. Profile Images"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="If you provide a profile image, the application may store the associated image reference with your customer profile."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="5. Account Updates"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="You can update supported profile information through the Edit Profile section of the application."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="6. Support"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Information provided when requesting customer support may be used to understand and respond to your support request."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="7. Data Protection"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="Customers should avoid sharing unnecessary sensitive information through support messages or other application fields."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                            Text="8. Policy Updates"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#BB86FC" />
+
+                            <Label
+                            Text="This policy may be updated when the customer application or its data-handling features change."
+                            FontSize="14"
+                            TextColor="#D0D3D9"
+                            LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <Label
+                Text="This privacy policy is provided for the IndoPlayHub training project and describes the intended handling of customer information within the application."
+                FontSize="13"
+                TextColor="#8F96A3"
+                LineBreakMode="WordWrap" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+ 
+
+</ContentPage>

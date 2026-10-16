@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.CustomerHomePage"
+    Title="IndoPlayHub"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ===================================================== -->
+        <!-- HEADER -->
+        <!-- ===================================================== -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="20,18,20,12"
+            ColumnDefinitions="*,Auto,Auto,Auto"
+            ColumnSpacing="10">
+
+            <!-- ================================================= -->
+            <!-- GREETING -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout
+                Grid.Column="0"
+                Spacing="3"
+                VerticalOptions="Center">
+
+                <Label
+                    x:Name="LblGreeting"
+                    Text="Hi 👋"
+                    FontSize="17"
+                    TextColor="#B8BDC7" />
+
+                <Label
+                    Text="Ready to play?"
+                    FontSize="29"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- MY BOOKINGS BUTTON -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="1"
+                WidthRequest="48"
+                HeightRequest="48"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                VerticalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="📅"
+                    FontSize="21"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+
+                    <TapGestureRecognizer
+                        Tapped="OnMyBookingsTapped" />
+
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- NOTIFICATIONS -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="2"
+                WidthRequest="48"
+                HeightRequest="48"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                VerticalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+
+                <Grid>
+
+                    <!-- NOTIFICATION ICON -->
+
+                    <Label
+                        Text="🔔"
+                        FontSize="21"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+
+
+                    <!-- UNREAD BADGE -->
+
+                    <Border
+                        x:Name="NotificationBadge"
+                        WidthRequest="17"
+                        HeightRequest="17"
+                        BackgroundColor="#FF4D67"
+                        StrokeThickness="0"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="0,3,2,0"
+                        IsVisible="False">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="9" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            x:Name="LblNotificationCount"
+                            Text="0"
+                            FontSize="9"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+
+                    </Border>
+
+                </Grid>
+
+
+                <Border.GestureRecognizers>
+
+                    <TapGestureRecognizer
+                        Tapped="OnNotificationsTapped" />
+
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- PROFILE -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="3"
+                WidthRequest="48"
+                HeightRequest="48"
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                VerticalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+
+                <Label
+                    Text="👤"
+                    FontSize="21"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border.GestureRecognizers>
+
+                    <TapGestureRecognizer
+                        Tapped="OnProfileTapped" />
+
+                </Border.GestureRecognizers>
+
+            </Border>
+
+        </Grid>
+
+
+        <!-- ===================================================== -->
+        <!-- MAIN CONTENT -->
+        <!-- ===================================================== -->
+
+        <ScrollView
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout
+                Padding="24,8,24,40"
+                Spacing="25">
+
+
+                <!-- ================================================= -->
+                <!-- SEARCH -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    HeightRequest="54">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        Padding="15,0">
+
+                        <Label
+                            Grid.Column="0"
+                            Text="🔎"
+                            FontSize="20"
+                            VerticalOptions="Center" />
+
+                        <Entry
+                            x:Name="TxtSearch"
+                            Grid.Column="1"
+                            Placeholder="Search sports, arenas or locations"
+                            PlaceholderColor="#70757F"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            FontSize="14"
+                            VerticalOptions="Center"
+                            TextChanged="OnSearchTextChanged" />
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- SPORTS HEADER -->
+                <!-- ================================================= -->
+
+                <Grid
+                    ColumnDefinitions="*,Auto">
+
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="3">
+
+                        <Label
+                            Text="Explore Sports"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            Text="Find your favorite way to play"
+                            FontSize="13"
+                            TextColor="#8F96A3" />
+
+                    </VerticalStackLayout>
+
+                    <Label
+                        Grid.Column="1"
+                        Text="See all"
+                        TextColor="#03DAC6"
+                        FontSize="13"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+
+                <!-- ================================================= -->
+                <!-- SPORTS -->
+                <!-- ================================================= -->
+
+                <CollectionView
+                    x:Name="CvSports"
+                    SelectionMode="None"
+                    HeightRequest="225">
+
+                    <CollectionView.ItemsLayout>
+
+                        <LinearItemsLayout
+                            Orientation="Horizontal"
+                            ItemSpacing="15" />
+
+                    </CollectionView.ItemsLayout>
+
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                WidthRequest="175"
+                                HeightRequest="210"
+                                BackgroundColor="#191B20"
+                                Stroke="#292D35"
+                                StrokeThickness="1">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="16" />
+                                </Border.StrokeShape>
+
+
+                                <Grid>
+
+                                    <!-- SPORT IMAGE -->
+
+                                    <Image
+                                        Source="{Binding ImageSource}"
+                                        Aspect="AspectFill" />
+
+
+                                    <!-- IMAGE OVERLAY -->
+
+                                    <BoxView
+                                        Color="Black"
+                                        Opacity="0.42" />
+
+
+                                    <!-- SPORT NAME -->
+
+                                    <Grid
+                                        Padding="15"
+                                        RowDefinitions="*,Auto">
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Text="{Binding CategoryName}"
+                                            FontSize="19"
+                                            FontAttributes="Bold"
+                                            TextColor="White" />
+
+                                    </Grid>
+
+
+                                    <!-- TAP -->
+
+                                    <Grid.GestureRecognizers>
+
+                                        <TapGestureRecognizer
+                                            Tapped="OnSportTapped" />
+
+                                    </Grid.GestureRecognizers>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <!-- ================================================= -->
+                <!-- POPULAR LOCATIONS -->
+                <!-- ================================================= -->
+
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Label
+                        Text="Popular Locations"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Find indoor sports around your city"
+                        FontSize="13"
+                        TextColor="#8F96A3" />
+
+                </VerticalStackLayout>
+
+
+                <!-- ================================================= -->
+                <!-- LOCATION CHIPS -->
+                <!-- ================================================= -->
+
+                <ScrollView
+                    Orientation="Horizontal"
+                    HorizontalScrollBarVisibility="Never">
+
+                    <HorizontalStackLayout
+                        Spacing="10">
+
+                        <!-- MULTAN -->
+
+                        <Border
+                            BackgroundColor="#191B20"
+                            Stroke="#292D35"
+                            Padding="16,12">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="📍 Multan"
+                                TextColor="White"
+                                FontSize="14" />
+
+                        </Border>
+
+
+                        <!-- LAHORE -->
+
+                        <Border
+                            BackgroundColor="#191B20"
+                            Stroke="#292D35"
+                            Padding="16,12">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="📍 Lahore"
+                                TextColor="White"
+                                FontSize="14" />
+
+                        </Border>
+
+
+                        <!-- ISLAMABAD -->
+
+                        <Border
+                            BackgroundColor="#191B20"
+                            Stroke="#292D35"
+                            Padding="16,12">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="📍 Islamabad"
+                                TextColor="White"
+                                FontSize="14" />
+
+                        </Border>
+
+                    </HorizontalStackLayout>
+
+                </ScrollView>
+
+
+                <!-- ================================================= -->
+                <!-- FIND YOUR ARENA -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+
+                    <VerticalStackLayout
+                        Spacing="8">
+
+                        <Label
+                            Text="🏟️ Find Your Arena"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            Text="Choose a sport to discover available arenas, courts, timings and prices."
+                            FontSize="13"
+                            TextColor="#8F96A3"
+                            LineBreakMode="WordWrap" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- FIND ARENAS NEAR YOU -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+
+                    <Grid
+                        ColumnDefinitions="Auto,*,Auto"
+                        ColumnSpacing="15">
+
+
+                        <!-- LOCATION ICON -->
+
+                        <Border
+                            Grid.Column="0"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            BackgroundColor="#12302D"
+                            StrokeThickness="0"
+                            VerticalOptions="Center">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="25" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="📍"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+
+                        </Border>
+
+
+                        <!-- TEXT -->
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="3"
+                            VerticalOptions="Center">
+
+                            <Label
+                                Text="Find Arenas Near You"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                Text="Discover indoor sports arenas by location"
+                                FontSize="13"
+                                TextColor="#8F96A3"
+                                LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <!-- ARROW -->
+
+                        <Label
+                            Grid.Column="2"
+                            Text="›"
+                            FontSize="30"
+                            TextColor="#03DAC6"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+
+                    <Border.GestureRecognizers>
+
+                        <TapGestureRecognizer
+                            Tapped="OnLocationTapped" />
+
+                    </Border.GestureRecognizers>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- PHASE 11 — MY BOOKINGS -->
+                <!-- ================================================= -->
+
+                <Border
+                    BackgroundColor="#191B20"
+                    Stroke="#292D35"
+                    StrokeThickness="1"
+                    Padding="20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+
+
+                    <Grid
+                        ColumnDefinitions="Auto,*,Auto"
+                        ColumnSpacing="15">
+
+
+                        <!-- BOOKING ICON -->
+
+                        <Border
+                            Grid.Column="0"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            BackgroundColor="#12302D"
+                            StrokeThickness="0"
+                            VerticalOptions="Center">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="25" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="📅"
+                                FontSize="23"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+
+                        </Border>
+
+
+                        <!-- TEXT -->
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="3"
+                            VerticalOptions="Center">
+
+                            <Label
+                                Text="My Bookings"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                Text="View upcoming, completed and cancelled bookings"
+                                FontSize="13"
+                                TextColor="#8F96A3"
+                                LineBreakMode="WordWrap" />
+
+                        </VerticalStackLayout>
+
+
+                        <!-- ARROW -->
+
+                        <Label
+                            Grid.Column="2"
+                            Text="›"
+                            FontSize="30"
+                            TextColor="#03DAC6"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+
+                    <Border.GestureRecognizers>
+
+                        <TapGestureRecognizer
+                            Tapped="OnMyBookingsTapped" />
+
+                    </Border.GestureRecognizers>
+
+                </Border>
+
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

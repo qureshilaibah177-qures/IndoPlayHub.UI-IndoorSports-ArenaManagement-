@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.CustomerLoginPage"
+    Title="Customer Login"
+    BackgroundColor="#101114">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="28,45"
+            Spacing="22"
+            MaximumWidthRequest="600"
+            HorizontalOptions="Center">
+
+            <!-- HEADER -->
+
+            <VerticalStackLayout Spacing="6">
+
+                <Label
+                    Text="Welcome Back"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                <Label
+                    Text="Sign in to continue your IndoPlayHub experience."
+                    FontSize="14"
+                    TextColor="#9CA3AF" />
+
+            </VerticalStackLayout>
+
+
+            <!-- LOGIN CARD -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <!-- EMAIL / PHONE -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="Email or Phone"
+                            FontSize="12"
+                            TextColor="#B8BDC7" />
+
+                        <Entry
+                            x:Name="TxtEmailOrPhone"
+                            Placeholder="Email or phone number"
+                            PlaceholderColor="#70757F"
+                            TextColor="White"
+                            BackgroundColor="#23262D"
+                            ClearButtonVisibility="WhileEditing" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- PASSWORD -->
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="Password"
+                            FontSize="12"
+                            TextColor="#B8BDC7" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <Entry
+                                x:Name="TxtPassword"
+                                Grid.Column="0"
+                                Placeholder="Enter your password"
+                                PlaceholderColor="#70757F"
+                                IsPassword="True"
+                                TextColor="White"
+                                BackgroundColor="#23262D" />
+
+                            <Button
+                                x:Name="BtnPasswordVisibility"
+                                Grid.Column="1"
+                                Text="👁"
+                                Clicked="OnPasswordVisibilityClicked"
+                                BackgroundColor="#23262D"
+                                TextColor="White"
+                                WidthRequest="50"
+                                CornerRadius="0" />
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+
+                    <!-- REMEMBER SESSION -->
+
+                    <HorizontalStackLayout Spacing="10">
+
+                        <CheckBox
+                            x:Name="ChkRememberMe"
+                            Color="#BB86FC" />
+
+                        <Label
+                            Text="Remember me"
+                            TextColor="#B8BDC7"
+                            FontSize="13"
+                            VerticalOptions="Center" />
+
+                    </HorizontalStackLayout>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <Button
+                        Text="Login"
+                        Clicked="OnLoginClicked"
+                        BackgroundColor="#BB86FC"
+                        TextColor="#111114"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="10" />
+
+
+                    <!-- FORGOT PASSWORD -->
+
+                    <Label
+                        Text="Forgot password?"
+                        TextColor="#03DAC6"
+                        FontSize="13"
+                        HorizontalOptions="Center">
+
+                        <Label.GestureRecognizers>
+
+                            <TapGestureRecognizer
+                                Tapped="OnForgotPasswordTapped" />
+
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+
+                    <!-- REGISTER -->
+
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="5">
+
+                        <Label
+                            Text="Don't have an account?"
+                            TextColor="#8F96A3"
+                            FontSize="13"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Text="Create Account"
+                            TextColor="#03DAC6"
+                            FontSize="13"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center">
+
+                            <Label.GestureRecognizers>
+
+                                <TapGestureRecognizer
+                                    Tapped="OnRegisterTapped" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

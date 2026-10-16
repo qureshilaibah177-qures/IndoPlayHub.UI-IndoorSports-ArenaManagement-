@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IndoPlayHub.UI.PortalSelectionPage"
+    Title="IndoPlayHub"
+    BackgroundColor="#101114"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30,55"
+            Spacing="28"
+            MaximumWidthRequest="650"
+            HorizontalOptions="Center">
+
+            <!-- ================================================= -->
+            <!-- BRAND / HEADER -->
+            <!-- ================================================= -->
+
+            <VerticalStackLayout
+                Spacing="8"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="IndoPlayHub"
+                    FontSize="34"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    Text="Indoor Sports. One Platform."
+                    FontSize="15"
+                    TextColor="#03DAC6"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    Text="Choose how you want to continue"
+                    FontSize="14"
+                    TextColor="#8F96A3"
+                    HorizontalOptions="Center"
+                    Margin="0,8,0,0" />
+
+            </VerticalStackLayout>
+
+
+            <!-- ================================================= -->
+            <!-- ARENA / ADMIN PORTAL -->
+            <!-- ================================================= -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <Grid
+                    RowDefinitions="Auto,Auto,Auto,Auto"
+                    RowSpacing="12">
+
+                    <!-- ICON -->
+
+                    <Border
+                        Grid.Row="0"
+                        WidthRequest="64"
+                        HeightRequest="64"
+                        HorizontalOptions="Start"
+                        BackgroundColor="#26212F">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            Text="🏟️"
+                            FontSize="32"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+
+                    </Border>
+
+
+                    <!-- TITLE -->
+
+                    <Label
+                        Grid.Row="1"
+                        Text="Arena / Admin Portal"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+
+                    <!-- DESCRIPTION -->
+
+                    <Label
+                        Grid.Row="2"
+                        Text="Manage your arena, sports, courts, menu and bookings."
+                        FontSize="13"
+                        TextColor="#8F96A3"
+                        LineBreakMode="WordWrap" />
+
+
+                    <!-- BUTTON -->
+
+                    <Button
+                        Grid.Row="3"
+                        Text="Continue as Arena Owner"
+                        Clicked="OnAdminPortalClicked"
+                        BackgroundColor="#BB86FC"
+                        TextColor="#111114"
+                        FontAttributes="Bold"
+                        HeightRequest="48"
+                        CornerRadius="10"
+                        Margin="0,5,0,0" />
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- CUSTOMER PORTAL -->
+            <!-- ================================================= -->
+
+            <Border
+                BackgroundColor="#191B20"
+                Stroke="#292D35"
+                StrokeThickness="1"
+                Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <Grid
+                    RowDefinitions="Auto,Auto,Auto,Auto"
+                    RowSpacing="12">
+
+                    <!-- ICON -->
+
+                    <Border
+                        Grid.Row="0"
+                        WidthRequest="64"
+                        HeightRequest="64"
+                        HorizontalOptions="Start"
+                        BackgroundColor="#173A35">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+
+                        <Label
+                            Text="👤"
+                            FontSize="32"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+
+                    </Border>
+
+
+                    <!-- TITLE -->
+
+                    <Label
+                        Grid.Row="1"
+                        Text="Customer Portal"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+
+                    <!-- DESCRIPTION -->
+
+                    <Label
+                        Grid.Row="2"
+                        Text="Discover indoor sports, explore arenas and book your favorite activities."
+                        FontSize="13"
+                        TextColor="#8F96A3"
+                        LineBreakMode="WordWrap" />
+
+
+                    <!-- BUTTON -->
+
+                    <Button
+                        Grid.Row="3"
+                        Text="Continue as Customer"
+                        Clicked="OnCustomerPortalClicked"
+                        BackgroundColor="#03DAC6"
+                        TextColor="#111114"
+                        FontAttributes="Bold"
+                        HeightRequest="48"
+                        CornerRadius="10"
+                        Margin="0,5,0,0" />
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- FOOTER -->
+            <!-- ================================================= -->
+
+            <Label
+                Text="IndoPlayHub • Indoor Sports Platform"
+                FontSize="12"
+                TextColor="#606773"
+                HorizontalOptions="Center"
+                Margin="0,5,0,0" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
